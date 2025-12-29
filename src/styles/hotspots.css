@@ -155,7 +155,7 @@
 }
 
 .hotspot-shell .hotspot-line {
-  width: 80%;
+  width: 200px;
   flex: none;
 }
 
@@ -165,7 +165,7 @@
 }
 
 .hotspot-outer .hotspot-line {
-  width: 10%;
+  width: 50px;
   flex: none;
 }
 
@@ -187,7 +187,7 @@
 }
 
 .hotspot-inner .hotspot-line {
-  width: 20%;
+  width: 80px;
   flex: none;
   transform-origin: left center;
 }
