@@ -95,6 +95,11 @@
   left: 20%;
 }
 
+.hotspot-shell .hotspot-line {
+  width: 277px;
+  flex: none;
+}
+
 .hotspot-outer {
   top: 40%;
   left: 10%;
