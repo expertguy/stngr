@@ -1,0 +1,208 @@
+.hotspot {
+  position: fixed;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.hotspot-dot-wrapper {
+  opacity: 0;
+}
+
+.hotspot.visible .hotspot-dot-wrapper {
+  animation: dotAppear 0.4s ease forwards;
+}
+
+.hotspot.visible .hotspot-line {
+  animation: lineExtend 0.6s ease 0.4s forwards;
+}
+
+.hotspot.visible .hotspot-content {
+  animation: contentAppear 0.5s ease 1s forwards;
+}
+
+@keyframes dotAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes lineExtend {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes contentAppear {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hotspot-content {
+  width: 370px;
+  min-width: 370px;
+  max-width: 370px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  flex-shrink: 0;
+}
+
+.hotspot-title {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  font-family: 'Michroma', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1.3;
+  word-wrap: break-word;
+}
+
+.hotspot-description {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #9CA3AF;
+  font-size: 0.875rem;
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.hotspot-line {
+  flex: 1 1 0;
+  height: 0;
+  opacity: 0.2;
+  border: 1px solid white;
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+.hotspot-dot-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.hotspot-dot-outer {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hotspot-dot-inner {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 8px;
+  top: 8.5px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 9999px;
+}
+
+.hotspot-shell {
+  top: 28%;
+  left: 10%;
+}
+
+.hotspot-shell.visible .hotspot-dot-wrapper {
+  animation-delay: 0.3s;
+}
+
+.hotspot-shell.visible .hotspot-line {
+  animation-delay: 0.7s;
+}
+
+.hotspot-shell.visible .hotspot-content {
+  animation-delay: 1.3s;
+}
+
+.hotspot-shell .hotspot-line {
+  width: 200px;
+  flex: none;
+}
+
+.hotspot-outer {
+  top: 50%;
+  left: 8%;
+}
+
+.hotspot-outer .hotspot-line {
+  width: 50px;
+  flex: none;
+}
+
+.hotspot-inner {
+  top: 46%;
+  right: 8%;
+}
+
+.hotspot-inner.visible .hotspot-dot-wrapper {
+  animation-delay: 0.6s;
+}
+
+.hotspot-inner.visible .hotspot-line {
+  animation-delay: 1s;
+}
+
+.hotspot-inner.visible .hotspot-content {
+  animation-delay: 1.6s;
+}
+
+.hotspot-inner .hotspot-line {
+  width: 80px;
+  flex: none;
+  transform-origin: left center;
+}
+
+.hotspot-inner .hotspot-content {
+  animation-name: contentAppearRight;
+}
+
+@keyframes contentAppearRight {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
