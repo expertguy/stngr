@@ -55,9 +55,9 @@
 }
 
 .hotspot-content {
-  width: 370px;
-  min-width: 370px;
-  max-width: 370px;
+  width: 290px;
+  min-width: 290px;
+  max-width: 290px;
   padding: 18px;
   background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
