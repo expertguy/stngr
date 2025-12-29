@@ -38,64 +38,9 @@ const PROTECTION_TIME = PROTECTION_FRAME / FPS
 
 // SCROLL CALCULATION
 const TOTAL_FRAMES = PROTECTION_FRAME - HERO_FRAME
-
-// Fixed section heights (in viewport heights)
-const SECTION_HEIGHTS = {
-  HERO: 1.5,              // Hero intro section
-  SAFETY_TRANSITION: 2,   // Transition to safety
-  SAFETY_PAUSE: 1.5,      // Safety section pause
-  HOTSPOT_TRANSITION: 2,  // Transition to hotspots
-  HOTSPOT_PAUSE: 1.5,     // Hotspots section pause
-  WHY_TRANSITION: 2,      // Transition to why strngr
-  WHY_PAUSE: 1.5,         // Why strngr section pause
-  HOW_TRANSITION: 2,      // Transition to how it works
-  HOW_PAUSE: 1.5,         // How it works section pause
-  FEATURES_TRANSITION: 2, // Transition to features
-  FEATURES_PAUSE: 1.5,    // Features section pause
-  PROTECTION_TRANSITION: 2, // Transition to protection
-  PROTECTION_PAUSE: 1.5   // Protection section pause
-}
-
-// Calculate total scroll length from fixed heights
-function calculateScrollLength() {
-  const viewportHeight = window.innerHeight
-  const totalVH = Object.values(SECTION_HEIGHTS).reduce((sum, vh) => sum + vh, 0)
-  return viewportHeight * totalVH
-}
-
-// Calculate accumulated heights for each section boundary
-function getSectionBoundaries() {
-  const vh = window.innerHeight
-  let accumulated = 0
-  const boundaries = {}
-
-  boundaries.heroEnd = accumulated += vh * SECTION_HEIGHTS.HERO
-  boundaries.safetyStart = accumulated
-  boundaries.safetyEnd = accumulated += vh * SECTION_HEIGHTS.SAFETY_TRANSITION
-  boundaries.safetyPauseEnd = accumulated += vh * SECTION_HEIGHTS.SAFETY_PAUSE
-  boundaries.hotspotStart = accumulated
-  boundaries.hotspotEnd = accumulated += vh * SECTION_HEIGHTS.HOTSPOT_TRANSITION
-  boundaries.hotspotPauseEnd = accumulated += vh * SECTION_HEIGHTS.HOTSPOT_PAUSE
-  boundaries.whyStart = accumulated
-  boundaries.whyEnd = accumulated += vh * SECTION_HEIGHTS.WHY_TRANSITION
-  boundaries.whyPauseEnd = accumulated += vh * SECTION_HEIGHTS.WHY_PAUSE
-  boundaries.howStart = accumulated
-  boundaries.howEnd = accumulated += vh * SECTION_HEIGHTS.HOW_TRANSITION
-  boundaries.howPauseEnd = accumulated += vh * SECTION_HEIGHTS.HOW_PAUSE
-  boundaries.featuresStart = accumulated
-  boundaries.featuresEnd = accumulated += vh * SECTION_HEIGHTS.FEATURES_TRANSITION
-  boundaries.featuresPauseEnd = accumulated += vh * SECTION_HEIGHTS.FEATURES_PAUSE
-  boundaries.protectionStart = accumulated
-  boundaries.protectionEnd = accumulated += vh * SECTION_HEIGHTS.PROTECTION_TRANSITION
-  boundaries.protectionPauseEnd = accumulated += vh * SECTION_HEIGHTS.PROTECTION_PAUSE
-
-  boundaries.total = accumulated
-
-  return boundaries
-}
-
-let TOTAL_SCROLL_LENGTH = calculateScrollLength()
-let boundaries = getSectionBoundaries()
+const PIXELS_PER_FRAME = 3
+const PAUSE_PIXELS = 800
+const TOTAL_SCROLL_LENGTH = (TOTAL_FRAMES * PIXELS_PER_FRAME) + (6 * PAUSE_PIXELS)
 
 /* ================= INIT ================= */
 
@@ -128,13 +73,50 @@ export function initScrollVideo() {
     video.classList.add("is-blurred")
 
     const totalPlayable = video.duration - HERO_TIME
+    const PAUSE_FRACTION = PAUSE_PIXELS / TOTAL_SCROLL_LENGTH
 
-    /* ================= RESUME TIMES ================= */
+    /* ================= FRAME POSITIONS IN SCROLL ================= */
+    const framesBeforeSafety = SAFETY_FRAME - HERO_FRAME
+    const framesBeforeHotspot = HOTSPOT_FRAME - HERO_FRAME
+    const framesBeforeWhy = WHY_FRAME - HERO_FRAME
+    const framesBeforeHow = HOW_FRAME - HERO_FRAME
+    const framesBeforeFeatures = FEATURES_FRAME - HERO_FRAME
+    const framesBeforeProtection = PROTECTION_FRAME - HERO_FRAME
+
+    /* ================= SAFETY (FRAME 148) ================= */
+    const safetyScrollPos = (framesBeforeSafety * PIXELS_PER_FRAME) / TOTAL_SCROLL_LENGTH
+    const safetyStart = safetyScrollPos
+    const safetyEnd = safetyStart + PAUSE_FRACTION
     const SAFETY_RESUME_TIME = Math.min(video.duration, (SAFETY_FRAME + 1) / FPS)
+
+    /* ================= HOTSPOTS (FRAME 274) ================= */
+    const hotspotScrollPos = ((framesBeforeHotspot * PIXELS_PER_FRAME) + PAUSE_PIXELS) / TOTAL_SCROLL_LENGTH
+    const hotspotStart = hotspotScrollPos
+    const hotspotEnd = hotspotStart + PAUSE_FRACTION
     const HOTSPOT_RESUME_TIME = Math.min(video.duration, (HOTSPOT_FRAME + 1) / FPS)
+
+    /* ================= WHY STRNGR (FRAME 368) ================= */
+    const whyScrollPos = ((framesBeforeWhy * PIXELS_PER_FRAME) + (2 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
+    const whyStart = whyScrollPos
+    const whyEnd = whyStart + PAUSE_FRACTION
     const WHY_RESUME_TIME = Math.min(video.duration, (WHY_FRAME + 1) / FPS)
+
+    /* ================= HOW IT WORKS (FRAME 434) ================= */
+    const howScrollPos = ((framesBeforeHow * PIXELS_PER_FRAME) + (3 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
+    const howStart = howScrollPos
+    const howEnd = howStart + PAUSE_FRACTION
     const HOW_RESUME_TIME = Math.min(video.duration, (HOW_FRAME + 1) / FPS)
+
+    /* ================= FEATURES (FRAME 505) ================= */
+    const featuresScrollPos = ((framesBeforeFeatures * PIXELS_PER_FRAME) + (4 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
+    const featuresStart = featuresScrollPos
+    const featuresEnd = featuresStart + PAUSE_FRACTION
     const FEATURES_RESUME_TIME = Math.min(video.duration, (FEATURES_FRAME + 1) / FPS)
+
+    /* ================= PROTECTION (FRAME 647) ================= */
+    const protectionScrollPos = ((framesBeforeProtection * PIXELS_PER_FRAME) + (5 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
+    const protectionStart = protectionScrollPos
+    const protectionEnd = protectionStart + PAUSE_FRACTION
     const PROTECTION_RESUME_TIME = Math.min(video.duration, (PROTECTION_FRAME + 1) / FPS)
 
     /* ================= HELPERS ================= */
@@ -163,11 +145,10 @@ export function initScrollVideo() {
 
       onUpdate: (self) => {
         const p = clamp(self.progress)
-        const scrollPos = p * boundaries.total
         let t
 
         /* ---------- HERO PHASE ---------- */
-        if (scrollPos > boundaries.heroEnd) {
+        if (p > 0.02) {
           heroOverlay?.classList.add("is-hidden")
           videoHeroOverlay?.classList.add("is-hidden")
           video.classList.remove("is-blurred")
@@ -177,78 +158,71 @@ export function initScrollVideo() {
           video.classList.add("is-blurred")
         }
 
-        /* ---------- HERO TO SAFETY ---------- */
-        if (scrollPos < boundaries.safetyStart) {
-          const local = invLerp(0, boundaries.safetyStart, scrollPos)
+        /* ---------- BEFORE SAFETY ---------- */
+        if (p < safetyStart) {
+          const local = invLerp(0, safetyStart, p)
           t = lerp(HERO_TIME, SAFETY_TIME, local)
           holdInfo?.classList.remove("visible")
         }
 
-        /* ---------- SAFETY TRANSITION ---------- */
-        else if (scrollPos >= boundaries.safetyStart && scrollPos < boundaries.safetyEnd) {
-          const local = invLerp(boundaries.safetyStart, boundaries.safetyEnd, scrollPos)
-          t = lerp(HERO_TIME, SAFETY_TIME, local)
-          holdInfo?.classList.remove("visible")
-        }
-
-        /* ---------- SAFETY PAUSE ---------- */
-        else if (scrollPos >= boundaries.safetyEnd && scrollPos < boundaries.safetyPauseEnd) {
+        /* ---------- SAFETY (FRAME 148) ---------- */
+        else if (p >= safetyStart && p <= safetyEnd) {
           t = SAFETY_TIME
           holdInfo?.classList.add("visible")
         }
 
         /* ---------- SAFETY TO HOTSPOTS ---------- */
-        else if (scrollPos >= boundaries.safetyPauseEnd && scrollPos < boundaries.hotspotEnd) {
-          const local = invLerp(boundaries.safetyPauseEnd, boundaries.hotspotEnd, scrollPos)
+        else if (p > safetyEnd && p < hotspotStart) {
+          const local = invLerp(safetyEnd, hotspotStart, p)
           t = lerp(SAFETY_RESUME_TIME, HOTSPOT_TIME, local)
           holdInfo?.classList.remove("visible")
         }
 
-        /* ---------- HOTSPOTS PAUSE ---------- */
-        else if (scrollPos >= boundaries.hotspotEnd && scrollPos < boundaries.hotspotPauseEnd) {
+        /* ---------- HOTSPOTS (FRAME 274) ---------- */
+        else if (p >= hotspotStart && p <= hotspotEnd) {
           t = HOTSPOT_TIME
         }
 
         /* ---------- HOTSPOTS TO WHY STRNGR ---------- */
-        else if (scrollPos >= boundaries.hotspotPauseEnd && scrollPos < boundaries.whyEnd) {
-          const local = invLerp(boundaries.hotspotPauseEnd, boundaries.whyEnd, scrollPos)
+        else if (p > hotspotEnd && p < whyStart) {
+          const local = invLerp(hotspotEnd, whyStart, p)
           t = lerp(HOTSPOT_RESUME_TIME, WHY_TIME, local)
         }
 
-        /* ---------- WHY STRNGR PAUSE ---------- */
-        else if (scrollPos >= boundaries.whyEnd && scrollPos < boundaries.whyPauseEnd) {
+        /* ---------- WHY STRNGR (FRAME 368) ---------- */
+        else if (p >= whyStart && p <= whyEnd) {
           t = WHY_TIME
         }
 
         /* ---------- WHY STRNGR TO HOW IT WORKS ---------- */
-        else if (scrollPos >= boundaries.whyPauseEnd && scrollPos < boundaries.howEnd) {
-          const local = invLerp(boundaries.whyPauseEnd, boundaries.howEnd, scrollPos)
+        else if (p > whyEnd && p < howStart) {
+          const local = invLerp(whyEnd, howStart, p)
           t = lerp(WHY_RESUME_TIME, HOW_TIME, local)
         }
 
-        /* ---------- HOW IT WORKS PAUSE ---------- */
-        else if (scrollPos >= boundaries.howEnd && scrollPos < boundaries.howPauseEnd) {
+        /* ---------- HOW IT WORKS (FRAME 434) ---------- */
+        else if (p >= howStart && p <= howEnd) {
           t = HOW_TIME
         }
 
         /* ---------- HOW IT WORKS TO FEATURES ---------- */
-        else if (scrollPos >= boundaries.howPauseEnd && scrollPos < boundaries.featuresEnd) {
-          const local = invLerp(boundaries.howPauseEnd, boundaries.featuresEnd, scrollPos)
+        else if (p > howEnd && p < featuresStart) {
+          const local = invLerp(howEnd, featuresStart, p)
           t = lerp(HOW_RESUME_TIME, FEATURES_TIME, local)
         }
 
-        /* ---------- FEATURES PAUSE ---------- */
-        else if (scrollPos >= boundaries.featuresEnd && scrollPos < boundaries.featuresPauseEnd) {
+        /* ---------- FEATURES (FRAME 505) ---------- */
+        else if (p >= featuresStart && p <= featuresEnd) {
           t = FEATURES_TIME
         }
 
         /* ---------- FEATURES TO PROTECTION ---------- */
-        else if (scrollPos >= boundaries.featuresPauseEnd && scrollPos < boundaries.protectionEnd) {
-          const local = invLerp(boundaries.featuresPauseEnd, boundaries.protectionEnd, scrollPos)
+        else if (p > featuresEnd && p < protectionStart) {
+          const local = invLerp(featuresEnd, protectionStart, p)
           t = lerp(FEATURES_RESUME_TIME, PROTECTION_TIME, local)
         }
 
-        /* ---------- PROTECTION PAUSE ---------- */
+        /* ---------- PROTECTION (FRAME 647) ---------- */
         else {
           t = PROTECTION_TIME
         }
@@ -319,20 +293,6 @@ export function initScrollVideo() {
           featuresOverlay?.classList.remove("visible")
         }
       }
-    })
-
-    /* ================= RESIZE HANDLER ================= */
-    let resizeTimeout
-    window.addEventListener("resize", () => {
-      clearTimeout(resizeTimeout)
-      resizeTimeout = setTimeout(() => {
-        // Recalculate scroll length and boundaries for new viewport size
-        TOTAL_SCROLL_LENGTH = calculateScrollLength()
-        boundaries = getSectionBoundaries()
-
-        // Refresh ScrollTrigger to apply new scroll length
-        ScrollTrigger.refresh()
-      }, 250)
     })
   })
 
