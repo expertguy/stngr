@@ -253,9 +253,9 @@ export function initScrollVideo() {
           howItWorks?.classList.add("visible")
           featuresOverlay?.classList.remove("visible")
         }
-        // FEATURES (frame 505)
+        // FEATURES (frame 505) - no blur
         else if (frame === FEATURES_FRAME) {
-          video.classList.add("is-blurred")
+          video.classList.remove("is-blurred")
           whyStngr?.classList.remove("visible")
           howItWorks?.classList.remove("visible")
           featuresOverlay?.classList.add("visible")
