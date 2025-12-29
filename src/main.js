@@ -22,6 +22,7 @@ import { initScrollVideo } from "./js/scrollVideo"
 import { initHeaderScroll } from "./js/headerScroll"
 import { initSmoothScroll } from "./js/smoothScroll"
 import { initCookieConsent } from "./js/cookieConsent"
+import { initNewsletter } from "./js/newsletter"
 
 const app = document.getElementById("app")
 
@@ -37,3 +38,4 @@ initHeaderScroll()
 initScrollVideo()
 initSmoothScroll()
 initCookieConsent()
+initNewsletter()
