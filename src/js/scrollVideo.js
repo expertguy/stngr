@@ -22,6 +22,13 @@ const HOTSPOT_FRAME = 274
 const HOTSPOT_TIME = HOTSPOT_FRAME / FPS
 const HOTSPOT_SCROLL_FRACTION = 0.06
 
+// HOLD 3 (BLUR SECTIONS)
+const BLUR_START_FRAME = 368
+const BLUR_END_FRAME = 500
+const BLUR_START_TIME = BLUR_START_FRAME / FPS
+const BLUR_END_TIME = BLUR_END_FRAME / FPS
+const BLUR_SCROLL_FRACTION = 0.15
+
 /* ================= INIT ================= */
 
 export function initScrollVideo() {
@@ -35,6 +42,9 @@ export function initScrollVideo() {
   const hotspotShell = document.getElementById("hotspotShell")
   const hotspotOuter = document.getElementById("hotspotOuter")
   const hotspotInner = document.getElementById("hotspotInner")
+
+  const whyStngr = document.getElementById("whyStngr")
+  const howItWorks = document.getElementById("howItWorks")
 
   if (!video) return
 
@@ -65,6 +75,15 @@ export function initScrollVideo() {
 
     const HOTSPOT_RESUME_TIME =
       Math.min(video.duration, HOTSPOT_TIME + 1 / FPS)
+
+    /* ================= HOLD 3 (BLUR) ================= */
+    const blurStart =
+      (BLUR_START_TIME - HERO_TIME) / totalPlayable
+    const blurEnd =
+      blurStart + BLUR_SCROLL_FRACTION
+
+    const BLUR_RESUME_TIME =
+      Math.min(video.duration, BLUR_END_TIME + 1 / FPS)
 
     /* ================= HELPERS ================= */
 
@@ -129,10 +148,22 @@ export function initScrollVideo() {
           t = HOTSPOT_TIME
         }
 
-        /* ---------- AFTER HOLD 2 ---------- */
+        /* ---------- BETWEEN HOLDS 2 & 3 ---------- */
+        else if (p > hotspotEnd && p < blurStart) {
+          const local = invLerp(hotspotEnd, blurStart, p)
+          t = lerp(HOTSPOT_RESUME_TIME, BLUR_START_TIME, local)
+        }
+
+        /* ---------- HOLD 3 (BLUR SECTIONS) ---------- */
+        else if (p >= blurStart && p <= blurEnd) {
+          const local = invLerp(blurStart, blurEnd, p)
+          t = lerp(BLUR_START_TIME, BLUR_END_TIME, local)
+        }
+
+        /* ---------- AFTER HOLD 3 ---------- */
         else {
-          const local = invLerp(hotspotEnd, 1, p)
-          t = lerp(HOTSPOT_RESUME_TIME, video.duration, local)
+          const local = invLerp(blurEnd, 1, p)
+          t = lerp(BLUR_RESUME_TIME, video.duration, local)
         }
 
         /* ---------- APPLY TIME ---------- */
@@ -158,6 +189,26 @@ export function initScrollVideo() {
           hotspotShell?.classList.remove("visible")
           hotspotOuter?.classList.remove("visible")
           hotspotInner?.classList.remove("visible")
+        }
+
+        // BLUR SECTIONS (frames 368-500)
+        if (frame >= BLUR_START_FRAME && frame <= BLUR_END_FRAME) {
+          video.classList.add("is-blurred")
+
+          const blurProgress = (frame - BLUR_START_FRAME) / (BLUR_END_FRAME - BLUR_START_FRAME)
+          const midPoint = 0.5
+
+          if (blurProgress < midPoint) {
+            whyStngr?.classList.add("visible")
+            howItWorks?.classList.remove("visible")
+          } else {
+            whyStngr?.classList.remove("visible")
+            howItWorks?.classList.add("visible")
+          }
+        } else {
+          video.classList.remove("is-blurred")
+          whyStngr?.classList.remove("visible")
+          howItWorks?.classList.remove("visible")
         }
       }
     })
