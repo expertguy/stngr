@@ -7,10 +7,10 @@
 .btn-primary {
   background: white;
   color: black;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   text-transform: uppercase;
-  line-height: 20px;
+  line-height: 1.25;
   letter-spacing: 0.35px;
   padding: 12px 24px;
   border: 1px solid transparent;
@@ -43,10 +43,10 @@
 .btn-outline {
   background: transparent;
   color: white;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   text-transform: uppercase;
-  line-height: 20px;
+  line-height: 1.25;
   letter-spacing: 0.35px;
   padding: 12px 24px;
   border: 1px solid rgba(255, 255, 255, 0.2);

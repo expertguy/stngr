@@ -52,22 +52,22 @@
 
 .blur-section-title {
   color: white;
-  font-size: 48px;
+  font-size: 3rem;
   font-family: 'Michroma', sans-serif;
   font-weight: 400;
   text-transform: uppercase;
-  line-height: 62.4px;
+  line-height: 1.3;
   text-align: center;
   margin: 0;
 }
 
 .blur-section-subtitle {
   color: #9CA3AF;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: 'Geist', sans-serif;
   font-weight: 300;
   text-transform: uppercase;
-  line-height: 27px;
+  line-height: 1.5;
   text-align: center;
   margin: 0;
 }
@@ -120,11 +120,11 @@
 
 .blur-card-number {
   color: white;
-  font-size: 48px;
+  font-size: 3rem;
   font-family: 'Michroma', sans-serif;
   font-weight: 400;
   text-transform: uppercase;
-  line-height: 62.4px;
+  line-height: 1.3;
   opacity: 0.3;
 }
 
@@ -136,21 +136,21 @@
 
 .blur-card-title {
   color: white;
-  font-size: 20px;
+  font-size: 1rem;
   font-family: 'Michroma', sans-serif;
   font-weight: 400;
   text-transform: uppercase;
-  line-height: 26px;
+  line-height: 1.3;
   margin: 0;
 }
 
 .blur-card-description {
   color: #9CA3AF;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-family: 'Geist', sans-serif;
   font-weight: 300;
   text-transform: uppercase;
-  line-height: 22.4px;
+  line-height: 1.6;
   margin: 0;
 }
 
