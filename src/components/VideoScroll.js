@@ -11,14 +11,12 @@ export function VideoScroll() {
   return `
     <main class="scroll-container">
       <section class="video-section">
-        <div class="video-blur-top"></div>
         <video
           id="scrollVideo"
           muted
           playsinline
           preload="auto"
         ></video>
-        <div class="video-blur-bottom"></div>
 
         ${Hero()}
         ${DebugFrame()}

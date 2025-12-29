@@ -3,49 +3,16 @@
   height: 100vh;
   margin: 0;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #0B1118;
-  overflow: hidden;
 }
 
 video {
   width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-  object-position: center;
+  height: 100vh;
+  object-fit: cover;
   transition: filter 0.6s ease, transform 0.6s ease;
-  position: relative;
-  z-index: 1;
 }
 
 video.is-blurred {
   filter: blur(60px);
   transform: scale(2);
-}
-
-.video-blur-top,
-.video-blur-bottom {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  background: #0C1217;
-  filter: blur(150px);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.95;
-}
-
-.video-blur-top {
-  top: 0;
-  box-shadow: 0 200px 300px rgba(12, 18, 23, 0.9);
-}
-
-.video-blur-bottom {
-  bottom: 0;
-  background: #15202A;
-  box-shadow: 0 -300px 400px rgba(21, 32, 42, 0.9);
-  filter: blur(200px);
 }
