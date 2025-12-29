@@ -149,6 +149,7 @@ export function initScrollVideo() {
       end: "+=4000",
       scrub: 0.4,
       pin: true,
+      pinSpacing: false,
 
       onUpdate: (self) => {
         const p = clamp(self.progress)

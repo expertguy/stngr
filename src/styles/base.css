@@ -24,6 +24,11 @@ main {
   padding: 0;
 }
 
+#app {
+  margin: 0;
+  padding: 0;
+}
+
 .content {
   padding: 30vh 10vw;
 }
