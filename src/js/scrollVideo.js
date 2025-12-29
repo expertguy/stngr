@@ -57,6 +57,36 @@ function setScrollContainerHeight() {
   scrollContainer.style.height = `${totalHeightInVh}vh`
 }
 
+function updateBlurShapesHeight() {
+  const video = document.getElementById('scrollVideo')
+  const blurTop = document.querySelector('.video-blur-top')
+  const blurBottom = document.querySelector('.video-blur-bottom')
+
+  if (!video || !blurTop || !blurBottom) return
+
+  const viewportWidth = window.innerWidth
+  const viewportHeight = window.innerHeight
+
+  // Calculate video height based on 16:9 aspect ratio
+  const videoHeight = (viewportWidth * 9) / 16
+
+  // Calculate remaining space
+  const remainingSpace = viewportHeight - videoHeight
+
+  if (remainingSpace > 0) {
+    // Split the remaining space between top and bottom
+    const topHeight = remainingSpace / 2
+    const bottomHeight = remainingSpace / 2
+
+    blurTop.style.height = `${topHeight}px`
+    blurBottom.style.height = `${bottomHeight}px`
+  } else {
+    // If video is taller than viewport, hide blur shapes
+    blurTop.style.height = '0px'
+    blurBottom.style.height = '0px'
+  }
+}
+
 /* ================= INIT ================= */
 
 export function initScrollVideo() {
@@ -65,10 +95,12 @@ export function initScrollVideo() {
 
   // Set initial height
   setScrollContainerHeight()
+  updateBlurShapesHeight()
 
   // Update height on resize
   window.addEventListener('resize', () => {
     setScrollContainerHeight()
+    updateBlurShapesHeight()
     ScrollTrigger.refresh()
   })
 
@@ -94,6 +126,7 @@ export function initScrollVideo() {
     /* ================= HERO LOCK ================= */
     video.currentTime = HERO_TIME
     video.classList.add("is-blurred")
+    updateBlurShapesHeight()
 
     const totalPlayable = video.duration - HERO_TIME
     const PAUSE_FRACTION = PAUSE_PIXELS / TOTAL_SCROLL_LENGTH

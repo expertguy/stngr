@@ -2,7 +2,7 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background: black;
+  background: #0B1118;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,16 +11,39 @@
 
 .newsletter-footer-video {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
+  transform: translateY(-50%) scale(2);
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
   object-fit: contain;
-  object-position: top center;
+  object-position: center;
   filter: blur(60px);
-  transform: scale(2);
   z-index: 0;
+}
+
+.newsletter-blur-top,
+.newsletter-blur-bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: #0C1217;
+  filter: blur(50px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.newsletter-blur-top {
+  top: 0;
+  box-shadow: 0 100px 100px rgba(12, 18, 23, 0.8);
+}
+
+.newsletter-blur-bottom {
+  bottom: 0;
+  background: #15202A;
+  box-shadow: 0 -200px 200px rgba(21, 32, 42, 0.8);
+  filter: blur(100px);
 }
 
 .newsletter-footer-container {

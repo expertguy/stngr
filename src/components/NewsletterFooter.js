@@ -4,6 +4,7 @@ import heroVideo from "../assets/hero.mp4"
 export function NewsletterFooter() {
   return `
     <section class="newsletter-footer-section" id="newsletterFooterSection">
+      <div class="newsletter-blur-top"></div>
       <video
         id="backgroundVideo"
         class="newsletter-footer-video"
@@ -12,6 +13,7 @@ export function NewsletterFooter() {
         preload="auto"
         src="${heroVideo}"
       ></video>
+      <div class="newsletter-blur-bottom"></div>
       <div class="newsletter-footer-container">
         <!-- Newsletter -->
         <div class="newsletter-content-wrapper">
