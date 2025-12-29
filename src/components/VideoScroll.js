@@ -67,32 +67,44 @@ export function VideoScroll() {
           </p>
         </div>
 
-        <!-- HOTSPOTS (FRAME 280) -->
+        <!-- HOTSPOTS (FRAME 274) -->
 
         <!-- REINFORCED IMPACT SHELL -->
         <div class="hotspot hotspot-shell" id="hotspotShell">
-          <span class="hotspot-dot"></span>
-          <span class="hotspot-line"></span>
-          <div class="hotspot-label">
-            REINFORCED<br />IMPACT SHELL
+          <div class="hotspot-content">
+            <div class="hotspot-title">Reinforced Shell</div>
+            <div class="hotspot-description">Disperses force while maintaining strength</div>
+          </div>
+          <div class="hotspot-line"></div>
+          <div class="hotspot-dot-wrapper">
+            <div class="hotspot-dot-outer"></div>
+            <div class="hotspot-dot-inner"></div>
           </div>
         </div>
 
         <!-- SHOCK ABSORBING OUTER LAYER -->
         <div class="hotspot hotspot-outer" id="hotspotOuter">
-          <span class="hotspot-dot"></span>
-          <span class="hotspot-line"></span>
-          <div class="hotspot-label">
-            SHOCK-ABSORBING<br />OUTER LAYER
+          <div class="hotspot-content">
+            <div class="hotspot-title">Shock-Absorbing Layer</div>
+            <div class="hotspot-description">Reduces force before it reaches you.</div>
+          </div>
+          <div class="hotspot-line"></div>
+          <div class="hotspot-dot-wrapper">
+            <div class="hotspot-dot-outer"></div>
+            <div class="hotspot-dot-inner"></div>
           </div>
         </div>
 
         <!-- CUSHIONED INNER LAYER -->
         <div class="hotspot hotspot-inner" id="hotspotInner">
-          <span class="hotspot-dot"></span>
-          <span class="hotspot-line"></span>
-          <div class="hotspot-label">
-            CUSHIONED<br />INNER LAYER
+          <div class="hotspot-dot-wrapper">
+            <div class="hotspot-dot-outer"></div>
+            <div class="hotspot-dot-inner"></div>
+          </div>
+          <div class="hotspot-line"></div>
+          <div class="hotspot-content">
+            <div class="hotspot-title">Cushioned Core</div>
+            <div class="hotspot-description">Comfort where it matters most.</div>
           </div>
         </div>
 

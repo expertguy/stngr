@@ -18,7 +18,7 @@ const HOLD_TIME = HOLD_FRAME / FPS
 const HOLD_SCROLL_FRACTION = 0.06
 
 // HOLD 2 (HOTSPOTS)
-const HOTSPOT_FRAME = 280
+const HOTSPOT_FRAME = 274
 const HOTSPOT_TIME = HOTSPOT_FRAME / FPS
 const HOTSPOT_SCROLL_FRACTION = 0.06
 
@@ -124,7 +124,7 @@ export function initScrollVideo() {
           holdInfo?.classList.remove("visible")
         }
 
-        /* ---------- HOLD 2 (FRAME 280) ---------- */
+        /* ---------- HOLD 2 (FRAME 274) ---------- */
         else if (p >= hotspotStart && p <= hotspotEnd) {
           t = HOTSPOT_TIME
         }
@@ -149,7 +149,7 @@ export function initScrollVideo() {
           holdInfo?.classList.remove("visible")
         }
 
-        // HOTSPOTS (frame 280 ONLY)
+        // HOTSPOTS (frame 274 ONLY)
         if (frame === HOTSPOT_FRAME) {
           hotspotShell?.classList.add("visible")
           hotspotOuter?.classList.add("visible")
