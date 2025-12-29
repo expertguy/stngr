@@ -101,30 +101,33 @@
 
 @media (max-width: 768px) {
   .hold-info {
-    left: 50%;
+    left: 0;
+    right: 0;
     top: 30%;
-    transform: translate(-50%, 12px);
-    max-width: 90%;
+    transform: translateY(12px);
+    max-width: none;
     padding: 0 16px;
     text-align: center;
+    margin: 0 auto;
   }
 
   .hold-info.visible {
-    transform: translate(-50%, 0);
+    transform: translateY(0);
   }
 
   .hold-info-right {
-    left: 50%;
-    right: auto;
+    left: 0;
+    right: 0;
     top: 30%;
-    transform: translate(-50%, 12px);
-    max-width: 90%;
+    transform: translateY(12px);
+    max-width: none;
     padding: 0 16px;
     text-align: center;
+    margin: 0 auto;
   }
 
   .hold-info-right.visible {
-    transform: translate(-50%, 0);
+    transform: translateY(0);
   }
 
   .hold-info h3,
