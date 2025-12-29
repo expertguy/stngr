@@ -99,6 +99,13 @@ Deno.serve(async (req: Request) => {
 });
 
 async function sendWelcomeEmail(email: string) {
+  const sendgridApiKey = Deno.env.get('SENDGRID_API_KEY');
+
+  if (!sendgridApiKey) {
+    console.error('SENDGRID_API_KEY is not configured');
+    throw new Error('Email service not configured');
+  }
+
   const emailHtml = `
     <!DOCTYPE html>
     <html>
@@ -109,7 +116,6 @@ async function sendWelcomeEmail(email: string) {
           .header { text-align: center; padding: 40px 0; }
           .logo { font-size: 32px; font-weight: bold; color: #000; }
           .content { background: #f9f9f9; padding: 30px; border-radius: 10px; }
-          .button { display: inline-block; padding: 12px 30px; background: #000; color: #fff; text-decoration: none; border-radius: 5px; margin: 20px 0; }
           .footer { text-align: center; padding: 20px; color: #666; font-size: 14px; }
         </style>
       </head>
@@ -138,8 +144,40 @@ async function sendWelcomeEmail(email: string) {
     </html>
   `;
 
-  console.log(`Welcome email would be sent to: ${email}`);
-  console.log('Email content prepared successfully');
-  
+  const emailData = {
+    personalizations: [
+      {
+        to: [{ email }],
+        subject: 'Welcome to STNGR - Thanks for Subscribing!',
+      },
+    ],
+    from: {
+      email: 'hello@mahmad.pro',
+      name: 'STNGR',
+    },
+    content: [
+      {
+        type: 'text/html',
+        value: emailHtml,
+      },
+    ],
+  };
+
+  const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${sendgridApiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(emailData),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('SendGrid API error:', response.status, errorText);
+    throw new Error(`Failed to send email: ${response.status}`);
+  }
+
+  console.log(`Welcome email sent successfully to: ${email}`);
   return true;
 }
