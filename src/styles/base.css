@@ -19,7 +19,7 @@ main {
 }
 
 .scroll-container {
-  height: 100vh;
+  height: 1000vh;
   margin: 0;
   padding: 0;
 }
