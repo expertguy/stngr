@@ -86,17 +86,35 @@ html, body {
 .btn-cta {
   background: white;
   color: black;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
-  padding: 12px 18px;
+  line-height: 20px;
+  letter-spacing: 0.35px;
+  padding: 12px 24px;
   border: none;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
+  min-width: 190px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-cta:hover {
-  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.btn-cta:active {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(0);
+}
+
+.btn-cta:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
 }
 
 /* ================= VIDEO + HERO ================= */
@@ -201,19 +219,73 @@ video.is-blurred {
 .btn-primary {
   background: white;
   color: black;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 20px;
+  letter-spacing: 0.35px;
   padding: 12px 24px;
-  border-radius: 999px;
   border: none;
   cursor: pointer;
+  min-width: 190px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:active {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
 }
 
 .btn-outline {
   background: transparent;
   color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 20px;
+  letter-spacing: 0.35px;
   padding: 12px 24px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
+  min-width: 190px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-outline:active {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(0);
+}
+
+.btn-outline:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
 }
 
 /* SCROLL INDICATOR */
