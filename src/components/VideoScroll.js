@@ -3,6 +3,7 @@ import { Safety } from './Safety'
 import { Hotspots } from './Hotspots'
 import { WhyStngr } from './WhyStngr'
 import { Process } from './Process'
+import { Features } from './Features'
 import { DebugFrame } from './DebugFrame'
 
 export function VideoScroll() {
@@ -22,6 +23,7 @@ export function VideoScroll() {
         ${Hotspots()}
         ${WhyStngr()}
         ${Process()}
+        ${Features()}
       </section>
     </main>
   `

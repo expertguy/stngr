@@ -22,12 +22,20 @@ const HOTSPOT_FRAME = 274
 const HOTSPOT_TIME = HOTSPOT_FRAME / FPS
 const HOTSPOT_SCROLL_FRACTION = 0.06
 
-// HOLD 3 (BLUR SECTIONS)
-const BLUR_START_FRAME = 368
-const BLUR_END_FRAME = 500
-const BLUR_START_TIME = BLUR_START_FRAME / FPS
-const BLUR_END_TIME = BLUR_END_FRAME / FPS
-const BLUR_SCROLL_FRACTION = 0.15
+// HOLD 3 (WHY STRNGR - FRAME 368)
+const WHY_FRAME = 368
+const WHY_TIME = WHY_FRAME / FPS
+const WHY_SCROLL_FRACTION = 0.06
+
+// HOLD 4 (HOW IT WORKS - FRAME 434)
+const HOW_FRAME = 434
+const HOW_TIME = HOW_FRAME / FPS
+const HOW_SCROLL_FRACTION = 0.06
+
+// HOLD 5 (FEATURES - FRAME 505)
+const FEATURES_FRAME = 505
+const FEATURES_TIME = FEATURES_FRAME / FPS
+const FEATURES_SCROLL_FRACTION = 0.06
 
 /* ================= INIT ================= */
 
@@ -45,6 +53,7 @@ export function initScrollVideo() {
 
   const whyStngr = document.getElementById("whyStngr")
   const howItWorks = document.getElementById("howItWorks")
+  const featuresOverlay = document.getElementById("featuresOverlay")
 
   if (!video) return
 
@@ -76,14 +85,32 @@ export function initScrollVideo() {
     const HOTSPOT_RESUME_TIME =
       Math.min(video.duration, HOTSPOT_TIME + 1 / FPS)
 
-    /* ================= HOLD 3 (BLUR) ================= */
-    const blurStart =
-      (BLUR_START_TIME - HERO_TIME) / totalPlayable
-    const blurEnd =
-      blurStart + BLUR_SCROLL_FRACTION
+    /* ================= HOLD 3 (WHY STRNGR) ================= */
+    const whyStart =
+      (WHY_TIME - HERO_TIME) / totalPlayable
+    const whyEnd =
+      whyStart + WHY_SCROLL_FRACTION
 
-    const BLUR_RESUME_TIME =
-      Math.min(video.duration, BLUR_END_TIME + 1 / FPS)
+    const WHY_RESUME_TIME =
+      Math.min(video.duration, WHY_TIME + 1 / FPS)
+
+    /* ================= HOLD 4 (HOW IT WORKS) ================= */
+    const howStart =
+      (HOW_TIME - HERO_TIME) / totalPlayable
+    const howEnd =
+      howStart + HOW_SCROLL_FRACTION
+
+    const HOW_RESUME_TIME =
+      Math.min(video.duration, HOW_TIME + 1 / FPS)
+
+    /* ================= HOLD 5 (FEATURES) ================= */
+    const featuresStart =
+      (FEATURES_TIME - HERO_TIME) / totalPlayable
+    const featuresEnd =
+      featuresStart + FEATURES_SCROLL_FRACTION
+
+    const FEATURES_RESUME_TIME =
+      Math.min(video.duration, FEATURES_TIME + 1 / FPS)
 
     /* ================= HELPERS ================= */
 
@@ -149,21 +176,42 @@ export function initScrollVideo() {
         }
 
         /* ---------- BETWEEN HOLDS 2 & 3 ---------- */
-        else if (p > hotspotEnd && p < blurStart) {
-          const local = invLerp(hotspotEnd, blurStart, p)
-          t = lerp(HOTSPOT_RESUME_TIME, BLUR_START_TIME, local)
+        else if (p > hotspotEnd && p < whyStart) {
+          const local = invLerp(hotspotEnd, whyStart, p)
+          t = lerp(HOTSPOT_RESUME_TIME, WHY_TIME, local)
         }
 
-        /* ---------- HOLD 3 (BLUR SECTIONS) ---------- */
-        else if (p >= blurStart && p <= blurEnd) {
-          const local = invLerp(blurStart, blurEnd, p)
-          t = lerp(BLUR_START_TIME, BLUR_END_TIME, local)
+        /* ---------- HOLD 3 (WHY STRNGR - FRAME 368) ---------- */
+        else if (p >= whyStart && p <= whyEnd) {
+          t = WHY_TIME
         }
 
-        /* ---------- AFTER HOLD 3 ---------- */
+        /* ---------- BETWEEN HOLDS 3 & 4 ---------- */
+        else if (p > whyEnd && p < howStart) {
+          const local = invLerp(whyEnd, howStart, p)
+          t = lerp(WHY_RESUME_TIME, HOW_TIME, local)
+        }
+
+        /* ---------- HOLD 4 (HOW IT WORKS - FRAME 434) ---------- */
+        else if (p >= howStart && p <= howEnd) {
+          t = HOW_TIME
+        }
+
+        /* ---------- BETWEEN HOLDS 4 & 5 ---------- */
+        else if (p > howEnd && p < featuresStart) {
+          const local = invLerp(howEnd, featuresStart, p)
+          t = lerp(HOW_RESUME_TIME, FEATURES_TIME, local)
+        }
+
+        /* ---------- HOLD 5 (FEATURES - FRAME 505) ---------- */
+        else if (p >= featuresStart && p <= featuresEnd) {
+          t = FEATURES_TIME
+        }
+
+        /* ---------- AFTER HOLD 5 ---------- */
         else {
-          const local = invLerp(blurEnd, 1, p)
-          t = lerp(BLUR_RESUME_TIME, video.duration, local)
+          const local = invLerp(featuresEnd, 1, p)
+          t = lerp(FEATURES_RESUME_TIME, video.duration, local)
         }
 
         /* ---------- APPLY TIME ---------- */
@@ -191,24 +239,35 @@ export function initScrollVideo() {
           hotspotInner?.classList.remove("visible")
         }
 
-        // BLUR SECTIONS (frames 368-500)
-        if (frame >= BLUR_START_FRAME && frame <= BLUR_END_FRAME) {
+        // WHY STRNGR (frame 368)
+        if (frame === WHY_FRAME) {
           video.classList.add("is-blurred")
-
-          const blurProgress = (frame - BLUR_START_FRAME) / (BLUR_END_FRAME - BLUR_START_FRAME)
-          const midPoint = 0.5
-
-          if (blurProgress < midPoint) {
-            whyStngr?.classList.add("visible")
-            howItWorks?.classList.remove("visible")
-          } else {
-            whyStngr?.classList.remove("visible")
-            howItWorks?.classList.add("visible")
-          }
-        } else {
-          video.classList.remove("is-blurred")
+          whyStngr?.classList.add("visible")
+          howItWorks?.classList.remove("visible")
+          featuresOverlay?.classList.remove("visible")
+        }
+        // HOW IT WORKS (frame 434)
+        else if (frame === HOW_FRAME) {
+          video.classList.add("is-blurred")
+          whyStngr?.classList.remove("visible")
+          howItWorks?.classList.add("visible")
+          featuresOverlay?.classList.remove("visible")
+        }
+        // FEATURES (frame 505)
+        else if (frame === FEATURES_FRAME) {
+          video.classList.add("is-blurred")
           whyStngr?.classList.remove("visible")
           howItWorks?.classList.remove("visible")
+          featuresOverlay?.classList.add("visible")
+        }
+        // Not on any hold frame
+        else {
+          if (frame < WHY_FRAME || frame > FEATURES_FRAME) {
+            video.classList.remove("is-blurred")
+          }
+          whyStngr?.classList.remove("visible")
+          howItWorks?.classList.remove("visible")
+          featuresOverlay?.classList.remove("visible")
         }
       }
     })
