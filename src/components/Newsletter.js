@@ -3,8 +3,8 @@ export function Newsletter() {
     <section class="newsletter">
       <div class="newsletter-icon">
         <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="6.67" y="11.67" width="66.67" height="56.67" stroke="white" stroke-width="2"/>
-          <rect x="6.67" y="23.33" width="66.67" height="16.67" stroke="white" stroke-width="2"/>
+          <path d="M6.66675 11.6665H73.3334V68.3332H6.66675V11.6665Z" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M6.66675 23.3335L40.0001 40.0002L73.3334 23.3335" stroke="white" stroke-width="2"/>
         </svg>
       </div>
       <div class="newsletter-content">

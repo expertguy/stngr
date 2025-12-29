@@ -95,23 +95,21 @@
   opacity: 1;
 }
 
-.features-columns {
+.features-grid {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   position: absolute;
-  left: 15%;
-  right: 15%;
-  width: 70%;
-}
-
-.features-column {
-  width: 320px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  top: 240px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1400px;
 }
 
 .feature-item {
+  flex: 1;
   padding: 32px 22px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
@@ -120,36 +118,32 @@
   align-items: center;
   gap: 28px;
   opacity: 0;
+  min-width: 200px;
 }
 
-.features-overlay.visible .features-column:nth-child(1) .feature-item:nth-child(1) {
+.features-overlay.visible .feature-item:nth-child(1) {
   animation: fadeUp 0.8s ease forwards;
   animation-delay: 0.1s;
 }
 
-.features-overlay.visible .features-column:nth-child(1) .feature-item:nth-child(2) {
-  animation: fadeUp 0.8s ease forwards;
-  animation-delay: 0.3s;
-}
-
-.features-overlay.visible .features-column:nth-child(1) .feature-item:nth-child(3) {
-  animation: fadeUp 0.8s ease forwards;
-  animation-delay: 0.5s;
-}
-
-.features-overlay.visible .features-column:nth-child(2) .feature-item:nth-child(1) {
+.features-overlay.visible .feature-item:nth-child(2) {
   animation: fadeUp 0.8s ease forwards;
   animation-delay: 0.2s;
 }
 
-.features-overlay.visible .features-column:nth-child(2) .feature-item:nth-child(2) {
+.features-overlay.visible .feature-item:nth-child(3) {
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+.features-overlay.visible .feature-item:nth-child(4) {
   animation: fadeUp 0.8s ease forwards;
   animation-delay: 0.4s;
 }
 
-.features-overlay.visible .features-column:nth-child(2) .feature-item:nth-child(3) {
+.features-overlay.visible .feature-item:nth-child(5) {
   animation: fadeUp 0.8s ease forwards;
-  animation-delay: 0.6s;
+  animation-delay: 0.5s;
 }
 
 .feature-icon {
@@ -176,13 +170,28 @@
 }
 
 @media (max-width: 1024px) {
-  .features-columns {
-    flex-direction: column;
+  .features-grid {
+    flex-wrap: wrap;
+    top: 220px;
     padding: 0 40px;
-    gap: 32px;
+    gap: 16px;
   }
 
-  .features-column {
+  .feature-item {
+    min-width: calc(50% - 8px);
+    flex: 0 0 calc(50% - 8px);
+  }
+}
+
+@media (max-width: 768px) {
+  .features-grid {
+    flex-direction: column;
+    top: 200px;
+    gap: 16px;
+  }
+
+  .feature-item {
     width: 100%;
+    min-width: 100%;
   }
 }
