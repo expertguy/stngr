@@ -19,7 +19,6 @@ export function VideoScroll() {
         ></video>
 
         ${Hero()}
-        ${DebugFrame()}
         ${Safety()}
         ${Hotspots()}
         ${WhyStngr()}
