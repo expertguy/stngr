@@ -243,8 +243,10 @@ export function initScrollVideo() {
         // PROTECTION (frame 647)
         if (frame === PROTECTION_FRAME) {
           holdInfoRight?.classList.add("visible")
+          video.classList.add("protection-frame")
         } else {
           holdInfoRight?.classList.remove("visible")
+          video.classList.remove("protection-frame")
         }
 
         // HOTSPOTS (frame 274 ONLY)

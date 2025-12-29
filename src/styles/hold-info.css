@@ -41,9 +41,9 @@
 
 .hold-info-right {
   position: fixed;
-  right: 10%;
+  right: 8%;
   top: 35%;
-  max-width: 520px;
+  max-width: 580px;
   z-index: 10;
   opacity: 0;
   transform: translateY(12px);
