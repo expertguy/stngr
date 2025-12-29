@@ -146,7 +146,7 @@ export function initScrollVideo() {
     ScrollTrigger.create({
       trigger: ".video-section",
       start: "top top",
-      end: "+=3200",
+      end: "+=2000",
       scrub: 0.4,
       pin: true,
 
