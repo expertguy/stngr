@@ -1,9 +1,9 @@
 export function SafetyRight() {
   return `
     <div class="hold-info-right" id="holdInfoRight">
-      <h3>Safety Shouldn't<br/>Be Obvious.</h3>
+      <h3>Thoughtful Protection</h3>
       <p>
-        Protection doesn't need to announce itself. STNGR delivers quiet confidence through thoughtful design and engineered discretion.
+        STNGR is designed with responsibility in mind. It does not promote aggression or confrontation. only personal preparedness.
       </p>
     </div>
   `
