@@ -3,7 +3,7 @@ export function Features() {
     <div class="features-overlay" id="featuresOverlay">
       <div class="features-blur"></div>
       <h2 class="features-title">Built for Every Day</h2>
-      <p class="features-subtitle">Wherever life takes you, STNGR stays discreetly by your side.</p>
+      <p class="features-subtitle">Five scenarios. One device. Complete discretion.</p>
       <div class="features-grid">
         <div class="feature-item">
           <div class="feature-icon">
