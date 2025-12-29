@@ -91,8 +91,8 @@
 }
 
 .hotspot-shell {
-  top: 18%;
-  left: 20%;
+  top: 12%;
+  left: 42%;
 }
 
 .hotspot-shell .hotspot-line {
@@ -101,8 +101,8 @@
 }
 
 .hotspot-outer {
-  top: 40%;
-  left: 10%;
+  top: 38%;
+  left: 18%;
 }
 
 .hotspot-outer .hotspot-line {
@@ -111,8 +111,8 @@
 }
 
 .hotspot-inner {
-  top: 55%;
-  right: 10%;
+  top: 52%;
+  right: 18%;
 }
 
 .hotspot-inner .hotspot-line {
