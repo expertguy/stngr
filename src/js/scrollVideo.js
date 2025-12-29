@@ -86,10 +86,10 @@ export function initScrollVideo() {
 
     /* ================= FRAME POSITIONS IN SCROLL (Percentage-based) ================= */
     // Define scroll positions as percentages of total scroll
-    // Each section gets equal spacing with pause zones
+    // Distribute 6 sections evenly across the scroll range
 
-    const PAUSE_DURATION = 0.10 // 10% of scroll for each pause
-    const TRANSITION_DURATION = 0.15 // 15% for transitions between sections
+    const PAUSE_DURATION = 0.08 // 8% of scroll for each pause
+    const TRANSITION_DURATION = 0.08 // 8% for transitions between sections
 
     /* ================= SAFETY (FRAME 148) ================= */
     const safetyStart = 0.02
