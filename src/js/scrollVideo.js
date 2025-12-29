@@ -73,79 +73,59 @@ export function initScrollVideo() {
 
     const totalPlayable = video.duration - HERO_TIME
 
-    // Calculate resume times (next frame after each pause)
-    const SAFETY_RESUME_TIME = Math.min(video.duration, SAFETY_TIME + 1 / FPS)
-    const HOTSPOT_RESUME_TIME = Math.min(video.duration, HOTSPOT_TIME + 1 / FPS)
-    const WHY_RESUME_TIME = Math.min(video.duration, WHY_TIME + 1 / FPS)
-    const HOW_RESUME_TIME = Math.min(video.duration, HOW_TIME + 1 / FPS)
-    const FEATURES_RESUME_TIME = Math.min(video.duration, FEATURES_TIME + 1 / FPS)
-    const PROTECTION_RESUME_TIME = Math.min(video.duration, PROTECTION_TIME + 1 / FPS)
+    /* ================= SAFETY (FRAME 148) ================= */
+    const safetyStart =
+      (SAFETY_TIME - HERO_TIME) / totalPlayable
+    const safetyEnd =
+      safetyStart + SAFETY_SCROLL_FRACTION
 
-    // Calculate total pause time
-    const totalPauseTime =
-      SAFETY_SCROLL_FRACTION +
-      HOTSPOT_SCROLL_FRACTION +
-      WHY_SCROLL_FRACTION +
-      HOW_SCROLL_FRACTION +
-      FEATURES_SCROLL_FRACTION +
-      PROTECTION_SCROLL_FRACTION
+    const SAFETY_RESUME_TIME =
+      Math.min(video.duration, SAFETY_TIME + 1 / FPS)
 
-    // Calculate playable scroll fraction (what's left after pauses)
-    const playableScrollFraction = 1 - totalPauseTime
+    /* ================= HOTSPOTS (FRAME 274) ================= */
+    const hotspotStart =
+      (HOTSPOT_TIME - HERO_TIME) / totalPlayable
+    const hotspotEnd =
+      hotspotStart + HOTSPOT_SCROLL_FRACTION
 
-    // Calculate frame ranges for smooth playback
-    const heroToSafety = SAFETY_TIME - HERO_TIME
-    const safetyToHotspot = HOTSPOT_TIME - SAFETY_RESUME_TIME
-    const hotspotToWhy = WHY_TIME - HOTSPOT_RESUME_TIME
-    const whyToHow = HOW_TIME - WHY_RESUME_TIME
-    const howToFeatures = FEATURES_TIME - HOW_RESUME_TIME
-    const featuresToProtection = PROTECTION_TIME - FEATURES_RESUME_TIME
+    const HOTSPOT_RESUME_TIME =
+      Math.min(video.duration, HOTSPOT_TIME + 1 / FPS)
 
-    const totalTransitionTime =
-      heroToSafety +
-      safetyToHotspot +
-      hotspotToWhy +
-      whyToHow +
-      howToFeatures +
-      featuresToProtection
+    /* ================= WHY STRNGR (FRAME 368) ================= */
+    const whyStart =
+      (WHY_TIME - HERO_TIME) / totalPlayable
+    const whyEnd =
+      whyStart + WHY_SCROLL_FRACTION
 
-    // Distribute scroll progress proportionally
-    let currentProgress = 0
+    const WHY_RESUME_TIME =
+      Math.min(video.duration, WHY_TIME + 1 / FPS)
 
-    // SAFETY section
-    const safetyPlayFraction = (heroToSafety / totalTransitionTime) * playableScrollFraction
-    const safetyStart = currentProgress + safetyPlayFraction
-    const safetyEnd = safetyStart + SAFETY_SCROLL_FRACTION
-    currentProgress = safetyEnd
+    /* ================= HOW IT WORKS (FRAME 434) ================= */
+    const howStart =
+      (HOW_TIME - HERO_TIME) / totalPlayable
+    const howEnd =
+      howStart + HOW_SCROLL_FRACTION
 
-    // HOTSPOTS section
-    const hotspotPlayFraction = (safetyToHotspot / totalTransitionTime) * playableScrollFraction
-    const hotspotStart = currentProgress + hotspotPlayFraction
-    const hotspotEnd = hotspotStart + HOTSPOT_SCROLL_FRACTION
-    currentProgress = hotspotEnd
+    const HOW_RESUME_TIME =
+      Math.min(video.duration, HOW_TIME + 1 / FPS)
 
-    // WHY STRNGR section
-    const whyPlayFraction = (hotspotToWhy / totalTransitionTime) * playableScrollFraction
-    const whyStart = currentProgress + whyPlayFraction
-    const whyEnd = whyStart + WHY_SCROLL_FRACTION
-    currentProgress = whyEnd
+    /* ================= FEATURES (FRAME 505) ================= */
+    const featuresStart =
+      (FEATURES_TIME - HERO_TIME) / totalPlayable
+    const featuresEnd =
+      featuresStart + FEATURES_SCROLL_FRACTION
 
-    // HOW IT WORKS section
-    const howPlayFraction = (whyToHow / totalTransitionTime) * playableScrollFraction
-    const howStart = currentProgress + howPlayFraction
-    const howEnd = howStart + HOW_SCROLL_FRACTION
-    currentProgress = howEnd
+    const FEATURES_RESUME_TIME =
+      Math.min(video.duration, FEATURES_TIME + 1 / FPS)
 
-    // FEATURES section
-    const featuresPlayFraction = (howToFeatures / totalTransitionTime) * playableScrollFraction
-    const featuresStart = currentProgress + featuresPlayFraction
-    const featuresEnd = featuresStart + FEATURES_SCROLL_FRACTION
-    currentProgress = featuresEnd
+    /* ================= PROTECTION (FRAME 647) ================= */
+    const protectionStart =
+      (PROTECTION_TIME - HERO_TIME) / totalPlayable
+    const protectionEnd =
+      protectionStart + PROTECTION_SCROLL_FRACTION
 
-    // PROTECTION section
-    const protectionPlayFraction = (featuresToProtection / totalTransitionTime) * playableScrollFraction
-    const protectionStart = currentProgress + protectionPlayFraction
-    const protectionEnd = 1.0
+    const PROTECTION_RESUME_TIME =
+      Math.min(video.duration, PROTECTION_TIME + 1 / FPS)
 
     /* ================= HELPERS ================= */
 
