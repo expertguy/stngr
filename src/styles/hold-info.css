@@ -100,19 +100,31 @@
 }
 
 @media (max-width: 768px) {
-  .hold-info,
-  .hold-info-right {
-    position: static;
-    max-width: 100%;
-    padding: 40px 24px;
+  .hold-info {
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, 12px);
+    max-width: 90%;
+    padding: 0 24px;
     text-align: center;
-    transform: none;
-    opacity: 1;
   }
 
-  .hold-info.visible,
+  .hold-info.visible {
+    transform: translate(-50%, 0);
+  }
+
+  .hold-info-right {
+    left: 50%;
+    right: auto;
+    top: 30%;
+    transform: translate(-50%, 12px);
+    max-width: 90%;
+    padding: 0 24px;
+    text-align: center;
+  }
+
   .hold-info-right.visible {
-    transform: none;
+    transform: translate(-50%, 0);
   }
 
   .hold-info h3,
