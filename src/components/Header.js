@@ -3,9 +3,9 @@ import logo from "../assets/logo.png"
 export function Header() {
   return `
     <header class="site-header">
-      <div class="header-logo">
+      <a href="#top" class="header-logo" style="text-decoration: none; display: flex; align-items: center;">
         <img src="${logo}" alt="STNGR logo" />
-      </div>
+      </a>
 
       <nav class="header-nav">
         <a href="#featuresOverlay" class="nav-link">Features</a>

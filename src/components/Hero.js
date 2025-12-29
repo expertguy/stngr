@@ -20,8 +20,8 @@ export function Hero() {
       </p>
 
       <div class="cta">
-        <button class="btn-primary">Learn More</button>
-        <button class="btn-outline">Join Waitlist</button>
+        <a href="#holdInfo" class="btn-primary" style="text-decoration: none;">Learn More</a>
+        <a href="#newsletter" class="btn-outline" style="text-decoration: none;">Join Waitlist</a>
       </div>
 
       <div class="scroll-indicator">

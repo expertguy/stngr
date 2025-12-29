@@ -27,6 +27,15 @@ export function initSmoothScroll() {
 
       const targetId = href.substring(1)
 
+      if (targetId === 'top') {
+        e.preventDefault()
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        })
+        return
+      }
+
       if (targetId === 'newsletter') {
         e.preventDefault()
         const newsletterSection = document.getElementById('newsletter')
