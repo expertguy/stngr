@@ -7,6 +7,8 @@ import "./styles/hold-info.css"
 import "./styles/hotspots.css"
 import "./styles/blur-sections.css"
 import "./styles/features.css"
+import "./styles/newsletter.css"
+import "./styles/footer.css"
 import "./styles/debug.css"
 
 import { Header } from "./components/Header"

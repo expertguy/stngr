@@ -1,0 +1,159 @@
+.newsletter {
+  width: 100%;
+  padding: 100px 120px;
+  background: rgba(8, 13, 20, 0.30);
+  backdrop-filter: blur(60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.newsletter-icon {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsletter-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+}
+
+.newsletter-title {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 48px;
+  font-family: 'Michroma', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 62.4px;
+  margin: 0;
+}
+
+.newsletter-subtitle {
+  width: 100%;
+  text-align: center;
+  color: #9CA3AF;
+  font-size: 18px;
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 27px;
+  margin: 0;
+}
+
+.newsletter-form {
+  width: 780px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.newsletter-input {
+  flex: 1;
+  height: 52px;
+  padding: 8px 18px;
+  background: black;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: #9CA3AF;
+  font-size: 14px;
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 14px;
+  outline: none;
+}
+
+.newsletter-input::placeholder {
+  color: #9CA3AF;
+}
+
+.newsletter-input:focus {
+  border-color: rgba(255, 255, 255, 0.20);
+}
+
+.newsletter-button {
+  width: 190px;
+  height: 52px;
+  padding: 12px 24px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  color: black;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 20px;
+  letter-spacing: 0.35px;
+  transition: background 0.3s ease;
+}
+
+.newsletter-button:hover {
+  background: #E5E5E5;
+}
+
+.newsletter-disclaimer {
+  width: 704px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.newsletter-disclaimer p {
+  text-align: center;
+  color: #9CA3AF;
+  font-size: 16px;
+  font-family: 'Geist', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 24px;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .newsletter {
+    padding: 60px 40px;
+  }
+
+  .newsletter-form {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .newsletter-button {
+    width: 100%;
+  }
+
+  .newsletter-disclaimer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .newsletter {
+    padding: 40px 20px;
+  }
+
+  .newsletter-title {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .newsletter-subtitle {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
