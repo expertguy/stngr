@@ -75,3 +75,26 @@
   outline: 2px solid rgba(255, 255, 255, 0.3);
   outline-offset: 2px;
 }
+
+@media (max-width: 768px) {
+  .cta {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-primary,
+  .btn-outline {
+    font-size: 0.8125rem;
+    padding: 10px 20px;
+    height: 44px;
+  }
+}

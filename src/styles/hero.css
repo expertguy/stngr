@@ -213,3 +213,75 @@
     opacity: 1;
   }
 }
+
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: clamp(40px, 7vw, 80px);
+  }
+
+  .hero-overlay-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-content .subtitle,
+  .hero-overlay-content .subtitle {
+    font-size: 1rem;
+    max-width: 500px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 0 16px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(32px, 10vw, 48px);
+    margin: 24px 0;
+  }
+
+  .hero-overlay-content h1 {
+    font-size: 2.5rem;
+    padding: 0 20px;
+  }
+
+  .hero-content .subtitle,
+  .hero-overlay-content .subtitle {
+    font-size: 0.9375rem;
+    max-width: 90%;
+    padding: 0 16px;
+  }
+
+  .badge {
+    padding: 6px 14px;
+  }
+
+  .badge-text {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .scroll-indicator {
+    bottom: 24px;
+  }
+
+  .scroll-text {
+    font-size: 0.625rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: clamp(28px, 12vw, 40px);
+  }
+
+  .hero-overlay-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content .subtitle,
+  .hero-overlay-content .subtitle {
+    font-size: 0.875rem;
+  }
+}

@@ -157,6 +157,7 @@
 @media (max-width: 1024px) {
   .blur-section-content {
     padding: 0 40px;
+    gap: 48px;
   }
 
   .blur-section-cards {
@@ -165,5 +166,69 @@
 
   .blur-card {
     width: 100%;
+  }
+
+  .blur-section-title {
+    font-size: 2.5rem;
+  }
+
+  .blur-section-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .blur-section-content {
+    padding: 0 24px;
+    gap: 40px;
+  }
+
+  .blur-section-title {
+    font-size: 2rem;
+  }
+
+  .blur-section-subtitle {
+    font-size: 0.9375rem;
+  }
+
+  .blur-card {
+    padding: 24px;
+    gap: 32px;
+  }
+
+  .blur-card-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .blur-card-icon svg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .blur-card-number {
+    font-size: 2.5rem;
+  }
+
+  .blur-card-title {
+    font-size: 0.9375rem;
+  }
+
+  .blur-card-description {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blur-section-title {
+    font-size: 1.75rem;
+  }
+
+  .blur-section-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .blur-card {
+    padding: 20px;
   }
 }

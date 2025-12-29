@@ -79,3 +79,50 @@
   line-height: 1.6;
   word-wrap: break-word;
 }
+
+@media (max-width: 1024px) {
+  .hold-info,
+  .hold-info-right {
+    max-width: 400px;
+    left: 5%;
+    right: 5%;
+  }
+
+  .hold-info h3,
+  .hold-info-right h3 {
+    font-size: 2.5rem;
+  }
+
+  .hold-info p,
+  .hold-info-right p {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hold-info,
+  .hold-info-right {
+    position: static;
+    max-width: 100%;
+    padding: 40px 24px;
+    text-align: center;
+    transform: none;
+    opacity: 1;
+  }
+
+  .hold-info.visible,
+  .hold-info-right.visible {
+    transform: none;
+  }
+
+  .hold-info h3,
+  .hold-info-right h3 {
+    font-size: 2rem;
+    margin: 0 0 16px 0;
+  }
+
+  .hold-info p,
+  .hold-info-right p {
+    font-size: 1rem;
+  }
+}

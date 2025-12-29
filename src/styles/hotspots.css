@@ -221,3 +221,36 @@
     transform: translateX(0);
   }
 }
+
+@media (max-width: 1024px) {
+  .hotspot-shell .hotspot-content,
+  .hotspot-outer .hotspot-content {
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  .hotspot-inner .hotspot-content {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  .hotspot-shell .hotspot-line {
+    width: 150px;
+  }
+
+  .hotspot-title {
+    font-size: 0.875rem;
+  }
+
+  .hotspot-description {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hotspot {
+    display: none;
+  }
+}

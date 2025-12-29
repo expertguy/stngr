@@ -23,6 +23,7 @@ import { initHeaderScroll } from "./js/headerScroll"
 import { initSmoothScroll } from "./js/smoothScroll"
 import { initCookieConsent } from "./js/cookieConsent"
 import { initNewsletter } from "./js/newsletter"
+import { initMobileMenu } from "./js/mobileMenu"
 
 const app = document.getElementById("app")
 
@@ -39,3 +40,4 @@ initScrollVideo()
 initSmoothScroll()
 initCookieConsent()
 initNewsletter()
+initMobileMenu()
