@@ -168,7 +168,7 @@
 
 .hotspot-inner {
   top: 46%;
-  right: 15%;
+  right: 100px;
 }
 
 .hotspot-inner.visible .hotspot-dot-wrapper {
@@ -184,7 +184,7 @@
 }
 
 .hotspot-inner .hotspot-line {
-  width: 79px;
+  width: 20%;
   flex: none;
   transform-origin: left center;
 }
