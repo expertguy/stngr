@@ -38,9 +38,50 @@ const PROTECTION_TIME = PROTECTION_FRAME / FPS
 
 // SCROLL CALCULATION
 const TOTAL_FRAMES = PROTECTION_FRAME - HERO_FRAME
-const PIXELS_PER_FRAME = 3
-const PAUSE_PIXELS = 800
-const TOTAL_SCROLL_LENGTH = (TOTAL_FRAMES * PIXELS_PER_FRAME) + (6 * PAUSE_PIXELS)
+
+// Dynamic scroll calculation based on viewport height
+function calculateScrollLength() {
+  const viewportHeight = window.innerHeight
+
+  // Base values for large screens (>= 900px height)
+  const BASE_PIXELS_PER_FRAME = 3
+  const BASE_PAUSE_PIXELS = 800
+
+  // Scale factors based on viewport height
+  let pixelsPerFrame = BASE_PIXELS_PER_FRAME
+  let pausePixels = BASE_PAUSE_PIXELS
+
+  // For smaller screens, increase scroll length proportionally
+  if (viewportHeight < 900) {
+    const scaleFactor = 900 / viewportHeight
+    pixelsPerFrame = BASE_PIXELS_PER_FRAME * scaleFactor
+    pausePixels = BASE_PAUSE_PIXELS * scaleFactor
+  }
+
+  // Additional boost for very small screens
+  if (viewportHeight < 700) {
+    const extraBoost = 1.3
+    pixelsPerFrame *= extraBoost
+    pausePixels *= extraBoost
+  }
+
+  if (viewportHeight < 500) {
+    const extraBoost = 1.5
+    pixelsPerFrame *= extraBoost
+    pausePixels *= extraBoost
+  }
+
+  return {
+    pixelsPerFrame,
+    pausePixels,
+    totalLength: (TOTAL_FRAMES * pixelsPerFrame) + (6 * pausePixels)
+  }
+}
+
+let scrollConfig = calculateScrollLength()
+let PIXELS_PER_FRAME = scrollConfig.pixelsPerFrame
+let PAUSE_PIXELS = scrollConfig.pausePixels
+let TOTAL_SCROLL_LENGTH = scrollConfig.totalLength
 
 /* ================= INIT ================= */
 
@@ -293,6 +334,22 @@ export function initScrollVideo() {
           featuresOverlay?.classList.remove("visible")
         }
       }
+    })
+
+    /* ================= RESIZE HANDLER ================= */
+    let resizeTimeout
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout)
+      resizeTimeout = setTimeout(() => {
+        // Recalculate scroll length for new viewport size
+        scrollConfig = calculateScrollLength()
+        PIXELS_PER_FRAME = scrollConfig.pixelsPerFrame
+        PAUSE_PIXELS = scrollConfig.pausePixels
+        TOTAL_SCROLL_LENGTH = scrollConfig.totalLength
+
+        // Refresh ScrollTrigger to apply new scroll length
+        ScrollTrigger.refresh()
+      }, 250)
     })
   })
 
