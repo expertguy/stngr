@@ -248,6 +248,7 @@ export function initScrollVideo() {
         /* ---------- PROTECTION (FRAME 647) ---------- */
         else {
           t = PROTECTION_TIME
+          video.classList.add("is-blurred")
         }
 
         /* ---------- APPLY TIME ---------- */
@@ -312,6 +313,19 @@ export function initScrollVideo() {
           howItWorks?.classList.remove("visible")
           featuresOverlay?.classList.remove("visible")
         }
+      }
+    })
+
+    /* ================= KEEP VIDEO BLURRED AFTER SCROLL SECTION ================= */
+
+    ScrollTrigger.create({
+      trigger: ".newsletter",
+      start: "top bottom",
+      onEnter: () => {
+        video.classList.add("is-blurred")
+      },
+      onLeaveBack: () => {
+        // Let the main scroll trigger handle the blur state
       }
     })
   })
