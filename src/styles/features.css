@@ -41,7 +41,7 @@
   width: 1139px;
   height: 554px;
   left: 50%;
-  top: -120px;
+  top: 15%;
   transform: translateX(-50%);
   background: #16212C;
   box-shadow: 200px 200px 200px rgba(22, 33, 44, 0.8);
@@ -52,7 +52,7 @@
 
 .features-title {
   position: absolute;
-  top: 10%;
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 48px;
@@ -68,7 +68,7 @@
 
 .features-subtitle {
   position: absolute;
-  top: 15%;
+  top: 154px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 18px;
