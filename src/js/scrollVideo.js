@@ -52,6 +52,7 @@ export function initScrollVideo() {
   const videoHeroOverlay = document.getElementById("videoHeroOverlay")
   const holdInfo = document.getElementById("holdInfo")
   const holdInfoRight = document.getElementById("holdInfoRight")
+  const protectionFrameContainer = document.getElementById("protectionFrameContainer")
 
   const hotspotShell = document.getElementById("hotspotShell")
   const hotspotOuter = document.getElementById("hotspotOuter")
@@ -243,10 +244,11 @@ export function initScrollVideo() {
         // PROTECTION (frame 647)
         if (frame === PROTECTION_FRAME) {
           holdInfoRight?.classList.add("visible")
-          video.classList.add("protection-frame")
+          protectionFrameContainer?.classList.add("visible")
+          video.classList.add("is-blurred")
         } else {
           holdInfoRight?.classList.remove("visible")
-          video.classList.remove("protection-frame")
+          protectionFrameContainer?.classList.remove("visible")
         }
 
         // HOTSPOTS (frame 274 ONLY)

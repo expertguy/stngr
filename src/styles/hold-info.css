@@ -79,3 +79,25 @@
   line-height: 32px;
   word-wrap: break-word;
 }
+
+.protection-frame-container {
+  position: fixed;
+  left: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45%;
+  z-index: 9;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.protection-frame-container.visible {
+  opacity: 1;
+}
+
+.protection-frame-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}

@@ -16,8 +16,3 @@ video.is-blurred {
   filter: blur(60px);
   transform: scale(2);
 }
-
-video.protection-frame {
-  transform: scale(0.7) translateX(-20%);
-  transition: transform 0.6s ease;
-}
