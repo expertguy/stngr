@@ -12,35 +12,35 @@ const FPS = 30
 const HERO_FRAME = 6
 const HERO_TIME = HERO_FRAME / FPS
 
-// HOLD 1 (TEXT)
-const HOLD_FRAME = 148
-const HOLD_TIME = HOLD_FRAME / FPS
-const HOLD_SCROLL_FRACTION = 0.06
+// SAFETY (FRAME 148)
+const SAFETY_FRAME = 148
+const SAFETY_TIME = SAFETY_FRAME / FPS
+const SAFETY_SCROLL_FRACTION = 0.12
 
-// HOLD 2 (HOTSPOTS)
+// HOTSPOTS (FRAME 274)
 const HOTSPOT_FRAME = 274
 const HOTSPOT_TIME = HOTSPOT_FRAME / FPS
-const HOTSPOT_SCROLL_FRACTION = 0.06
+const HOTSPOT_SCROLL_FRACTION = 0.12
 
-// HOLD 3 (WHY STRNGR - FRAME 368)
+// WHY STRNGR (FRAME 368)
 const WHY_FRAME = 368
 const WHY_TIME = WHY_FRAME / FPS
-const WHY_SCROLL_FRACTION = 0.06
+const WHY_SCROLL_FRACTION = 0.12
 
-// HOLD 4 (HOW IT WORKS - FRAME 434)
+// HOW IT WORKS (FRAME 434)
 const HOW_FRAME = 434
 const HOW_TIME = HOW_FRAME / FPS
-const HOW_SCROLL_FRACTION = 0.06
+const HOW_SCROLL_FRACTION = 0.12
 
-// HOLD 5 (FEATURES - FRAME 505)
+// FEATURES (FRAME 505)
 const FEATURES_FRAME = 505
 const FEATURES_TIME = FEATURES_FRAME / FPS
-const FEATURES_SCROLL_FRACTION = 0.06
+const FEATURES_SCROLL_FRACTION = 0.12
 
-// HOLD 6 (SAFETY RIGHT - FRAME 647)
-const SAFETY_RIGHT_FRAME = 647
-const SAFETY_RIGHT_TIME = SAFETY_RIGHT_FRAME / FPS
-const SAFETY_RIGHT_SCROLL_FRACTION = 0.08
+// PROTECTION (FRAME 647)
+const PROTECTION_FRAME = 647
+const PROTECTION_TIME = PROTECTION_FRAME / FPS
+const PROTECTION_SCROLL_FRACTION = 0.15
 
 /* ================= INIT ================= */
 
@@ -73,16 +73,16 @@ export function initScrollVideo() {
 
     const totalPlayable = video.duration - HERO_TIME
 
-    /* ================= HOLD 1 ================= */
-    const holdStart =
-      (HOLD_TIME - HERO_TIME) / totalPlayable
-    const holdEnd =
-      holdStart + HOLD_SCROLL_FRACTION
+    /* ================= SAFETY (FRAME 148) ================= */
+    const safetyStart =
+      (SAFETY_TIME - HERO_TIME) / totalPlayable
+    const safetyEnd =
+      safetyStart + SAFETY_SCROLL_FRACTION
 
-    const HOLD_RESUME_TIME =
-      Math.min(video.duration, HOLD_TIME + 1 / FPS)
+    const SAFETY_RESUME_TIME =
+      Math.min(video.duration, SAFETY_TIME + 1 / FPS)
 
-    /* ================= HOLD 2 ================= */
+    /* ================= HOTSPOTS (FRAME 274) ================= */
     const hotspotStart =
       (HOTSPOT_TIME - HERO_TIME) / totalPlayable
     const hotspotEnd =
@@ -91,7 +91,7 @@ export function initScrollVideo() {
     const HOTSPOT_RESUME_TIME =
       Math.min(video.duration, HOTSPOT_TIME + 1 / FPS)
 
-    /* ================= HOLD 3 (WHY STRNGR) ================= */
+    /* ================= WHY STRNGR (FRAME 368) ================= */
     const whyStart =
       (WHY_TIME - HERO_TIME) / totalPlayable
     const whyEnd =
@@ -100,7 +100,7 @@ export function initScrollVideo() {
     const WHY_RESUME_TIME =
       Math.min(video.duration, WHY_TIME + 1 / FPS)
 
-    /* ================= HOLD 4 (HOW IT WORKS) ================= */
+    /* ================= HOW IT WORKS (FRAME 434) ================= */
     const howStart =
       (HOW_TIME - HERO_TIME) / totalPlayable
     const howEnd =
@@ -109,7 +109,7 @@ export function initScrollVideo() {
     const HOW_RESUME_TIME =
       Math.min(video.duration, HOW_TIME + 1 / FPS)
 
-    /* ================= HOLD 5 (FEATURES) ================= */
+    /* ================= FEATURES (FRAME 505) ================= */
     const featuresStart =
       (FEATURES_TIME - HERO_TIME) / totalPlayable
     const featuresEnd =
@@ -118,14 +118,14 @@ export function initScrollVideo() {
     const FEATURES_RESUME_TIME =
       Math.min(video.duration, FEATURES_TIME + 1 / FPS)
 
-    /* ================= HOLD 6 (SAFETY RIGHT) ================= */
-    const safetyRightStart =
-      (SAFETY_RIGHT_TIME - HERO_TIME) / totalPlayable
-    const safetyRightEnd =
-      safetyRightStart + SAFETY_RIGHT_SCROLL_FRACTION
+    /* ================= PROTECTION (FRAME 647) ================= */
+    const protectionStart =
+      (PROTECTION_TIME - HERO_TIME) / totalPlayable
+    const protectionEnd =
+      protectionStart + PROTECTION_SCROLL_FRACTION
 
-    const SAFETY_RIGHT_RESUME_TIME =
-      Math.min(video.duration, SAFETY_RIGHT_TIME + 1 / FPS)
+    const PROTECTION_RESUME_TIME =
+      Math.min(video.duration, PROTECTION_TIME + 1 / FPS)
 
     /* ================= HELPERS ================= */
 
@@ -166,73 +166,73 @@ export function initScrollVideo() {
           video.classList.add("is-blurred")
         }
 
-        /* ---------- BEFORE HOLD 1 ---------- */
-        if (p < holdStart) {
-          const local = invLerp(0, holdStart, p)
-          t = lerp(HERO_TIME, HOLD_TIME, local)
+        /* ---------- BEFORE SAFETY ---------- */
+        if (p < safetyStart) {
+          const local = invLerp(0, safetyStart, p)
+          t = lerp(HERO_TIME, SAFETY_TIME, local)
           holdInfo?.classList.remove("visible")
         }
 
-        /* ---------- HOLD 1 (FRAME 148) ---------- */
-        else if (p >= holdStart && p <= holdEnd) {
-          t = HOLD_TIME
+        /* ---------- SAFETY (FRAME 148) ---------- */
+        else if (p >= safetyStart && p <= safetyEnd) {
+          t = SAFETY_TIME
           holdInfo?.classList.add("visible")
         }
 
-        /* ---------- BETWEEN HOLDS ---------- */
-        else if (p > holdEnd && p < hotspotStart) {
-          const local = invLerp(holdEnd, hotspotStart, p)
-          t = lerp(HOLD_RESUME_TIME, HOTSPOT_TIME, local)
+        /* ---------- SAFETY TO HOTSPOTS ---------- */
+        else if (p > safetyEnd && p < hotspotStart) {
+          const local = invLerp(safetyEnd, hotspotStart, p)
+          t = lerp(SAFETY_RESUME_TIME, HOTSPOT_TIME, local)
           holdInfo?.classList.remove("visible")
         }
 
-        /* ---------- HOLD 2 (FRAME 274) ---------- */
+        /* ---------- HOTSPOTS (FRAME 274) ---------- */
         else if (p >= hotspotStart && p <= hotspotEnd) {
           t = HOTSPOT_TIME
         }
 
-        /* ---------- BETWEEN HOLDS 2 & 3 ---------- */
+        /* ---------- HOTSPOTS TO WHY STRNGR ---------- */
         else if (p > hotspotEnd && p < whyStart) {
           const local = invLerp(hotspotEnd, whyStart, p)
           t = lerp(HOTSPOT_RESUME_TIME, WHY_TIME, local)
         }
 
-        /* ---------- HOLD 3 (WHY STRNGR - FRAME 368) ---------- */
+        /* ---------- WHY STRNGR (FRAME 368) ---------- */
         else if (p >= whyStart && p <= whyEnd) {
           t = WHY_TIME
         }
 
-        /* ---------- BETWEEN HOLDS 3 & 4 ---------- */
+        /* ---------- WHY STRNGR TO HOW IT WORKS ---------- */
         else if (p > whyEnd && p < howStart) {
           const local = invLerp(whyEnd, howStart, p)
           t = lerp(WHY_RESUME_TIME, HOW_TIME, local)
         }
 
-        /* ---------- HOLD 4 (HOW IT WORKS - FRAME 434) ---------- */
+        /* ---------- HOW IT WORKS (FRAME 434) ---------- */
         else if (p >= howStart && p <= howEnd) {
           t = HOW_TIME
         }
 
-        /* ---------- BETWEEN HOLDS 4 & 5 ---------- */
+        /* ---------- HOW IT WORKS TO FEATURES ---------- */
         else if (p > howEnd && p < featuresStart) {
           const local = invLerp(howEnd, featuresStart, p)
           t = lerp(HOW_RESUME_TIME, FEATURES_TIME, local)
         }
 
-        /* ---------- HOLD 5 (FEATURES - FRAME 505) ---------- */
+        /* ---------- FEATURES (FRAME 505) ---------- */
         else if (p >= featuresStart && p <= featuresEnd) {
           t = FEATURES_TIME
         }
 
-        /* ---------- BETWEEN HOLDS 5 & 6 ---------- */
-        else if (p > featuresEnd && p < safetyRightStart) {
-          const local = invLerp(featuresEnd, safetyRightStart, p)
-          t = lerp(FEATURES_RESUME_TIME, SAFETY_RIGHT_TIME, local)
+        /* ---------- FEATURES TO PROTECTION ---------- */
+        else if (p > featuresEnd && p < protectionStart) {
+          const local = invLerp(featuresEnd, protectionStart, p)
+          t = lerp(FEATURES_RESUME_TIME, PROTECTION_TIME, local)
         }
 
-        /* ---------- HOLD 6 (SAFETY RIGHT - FRAME 647) ---------- */
+        /* ---------- PROTECTION (FRAME 647) ---------- */
         else {
-          t = SAFETY_RIGHT_TIME
+          t = PROTECTION_TIME
         }
 
         /* ---------- APPLY TIME ---------- */
@@ -242,15 +242,15 @@ export function initScrollVideo() {
         /* ---------- FRAME-LOCKED VISIBILITY ---------- */
         const frame = frameFromTime(t)
 
-        // HOLD TEXT (frame 148)
-        if (frame === HOLD_FRAME) {
+        // SAFETY (frame 148)
+        if (frame === SAFETY_FRAME) {
           holdInfo?.classList.add("visible")
         } else {
           holdInfo?.classList.remove("visible")
         }
 
-        // SAFETY RIGHT (frame 647)
-        if (frame === SAFETY_RIGHT_FRAME) {
+        // PROTECTION (frame 647)
+        if (frame === PROTECTION_FRAME) {
           holdInfoRight?.classList.add("visible")
         } else {
           holdInfoRight?.classList.remove("visible")

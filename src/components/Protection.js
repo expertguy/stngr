@@ -1,4 +1,4 @@
-export function SafetyRight() {
+export function Protection() {
   return `
     <div class="hold-info-right" id="holdInfoRight">
       <h3>Thoughtful Protection</h3>

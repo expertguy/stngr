@@ -1,4 +1,4 @@
-export function Process() {
+export function HowItWorks() {
   return `
     <div class="blur-section" id="howItWorks">
       <div class="blur-section-content">

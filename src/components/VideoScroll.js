@@ -1,10 +1,10 @@
 import { Hero } from './Hero'
 import { Safety } from './Safety'
-import { SafetyRight } from './SafetyRight'
 import { Hotspots } from './Hotspots'
 import { WhyStngr } from './WhyStngr'
-import { Process } from './Process'
+import { HowItWorks } from './HowItWorks'
 import { Features } from './Features'
+import { Protection } from './Protection'
 import { DebugFrame } from './DebugFrame'
 
 export function VideoScroll() {
@@ -21,11 +21,11 @@ export function VideoScroll() {
         ${Hero()}
         ${DebugFrame()}
         ${Safety()}
-        ${SafetyRight()}
         ${Hotspots()}
         ${WhyStngr()}
-        ${Process()}
+        ${HowItWorks()}
         ${Features()}
+        ${Protection()}
       </section>
     </main>
   `
