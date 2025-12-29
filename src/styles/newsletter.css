@@ -177,8 +177,14 @@
     flex-direction: column;
   }
 
+  .newsletter-input {
+    width: 100%;
+    height: 56px;
+  }
+
   .newsletter-button {
     width: 100%;
+    height: 56px;
   }
 
   .newsletter-disclaimer {
@@ -192,7 +198,7 @@
 
 @media (max-width: 768px) {
   .newsletter {
-    padding: 50px 20px 40px 20px;
+    padding: 50px 16px 40px 16px;
   }
 
   .newsletter-icon {
@@ -208,6 +214,14 @@
   .newsletter-subtitle {
     font-size: 1rem;
     line-height: 1.5;
+  }
+
+  .newsletter-input {
+    height: 52px;
+  }
+
+  .newsletter-button {
+    height: 52px;
   }
 
   .newsletter-disclaimer p {
