@@ -32,19 +32,20 @@ video.is-blurred {
   left: 0;
   width: 100%;
   background: #0C1217;
-  filter: blur(50px);
+  filter: blur(150px);
   z-index: 0;
   pointer-events: none;
+  opacity: 0.95;
 }
 
 .video-blur-top {
   top: 0;
-  box-shadow: 0 100px 100px rgba(12, 18, 23, 0.8);
+  box-shadow: 0 200px 300px rgba(12, 18, 23, 0.9);
 }
 
 .video-blur-bottom {
   bottom: 0;
   background: #15202A;
-  box-shadow: 0 -200px 200px rgba(21, 32, 42, 0.8);
-  filter: blur(100px);
+  box-shadow: 0 -300px 400px rgba(21, 32, 42, 0.9);
+  filter: blur(200px);
 }
