@@ -1,6 +1,6 @@
 .newsletter {
   width: 100%;
-  padding: 0 120px 100px 120px;
+  padding: 50px 120px 100px 120px;
   margin: 0;
   background: rgba(8, 13, 20, 0.30);
   backdrop-filter: blur(60px);
@@ -126,7 +126,7 @@
 
 @media (max-width: 1024px) {
   .newsletter {
-    padding: 0 40px 60px 40px;
+    padding: 50px 40px 60px 40px;
   }
 
   .newsletter-form {
@@ -145,7 +145,7 @@
 
 @media (max-width: 768px) {
   .newsletter {
-    padding: 0 20px 40px 20px;
+    padding: 50px 20px 40px 20px;
   }
 
   .newsletter-title {
