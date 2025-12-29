@@ -1,6 +1,7 @@
 export function Features() {
   return `
     <div class="features-overlay" id="featuresOverlay">
+      <h2 class="features-title">Built for Every Day</h2>
       <div class="features-columns">
         <div class="features-column">
           <div class="feature-item">
