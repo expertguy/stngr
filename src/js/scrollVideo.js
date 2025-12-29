@@ -43,45 +43,14 @@ const TOTAL_FRAMES = PROTECTION_FRAME - HERO_FRAME
 function calculateScrollLength() {
   const viewportHeight = window.innerHeight
 
-  // Base values for large screens (>= 900px height)
-  const BASE_PIXELS_PER_FRAME = 3
-  const BASE_PAUSE_PIXELS = 800
+  // Calculate total scroll as a multiple of viewport height
+  // This ensures consistent experience across all screen sizes
+  const VIEWPORT_MULTIPLIER = 8 // Total scroll = 8x viewport height
 
-  // Scale factors based on viewport height
-  let pixelsPerFrame = BASE_PIXELS_PER_FRAME
-  let pausePixels = BASE_PAUSE_PIXELS
-
-  // For smaller screens, increase scroll length proportionally
-  if (viewportHeight < 900) {
-    const scaleFactor = 900 / viewportHeight
-    pixelsPerFrame = BASE_PIXELS_PER_FRAME * scaleFactor
-    pausePixels = BASE_PAUSE_PIXELS * scaleFactor
-  }
-
-  // Additional boost for very small screens
-  if (viewportHeight < 700) {
-    const extraBoost = 1.3
-    pixelsPerFrame *= extraBoost
-    pausePixels *= extraBoost
-  }
-
-  if (viewportHeight < 500) {
-    const extraBoost = 1.5
-    pixelsPerFrame *= extraBoost
-    pausePixels *= extraBoost
-  }
-
-  return {
-    pixelsPerFrame,
-    pausePixels,
-    totalLength: (TOTAL_FRAMES * pixelsPerFrame) + (6 * pausePixels)
-  }
+  return viewportHeight * VIEWPORT_MULTIPLIER
 }
 
-let scrollConfig = calculateScrollLength()
-let PIXELS_PER_FRAME = scrollConfig.pixelsPerFrame
-let PAUSE_PIXELS = scrollConfig.pausePixels
-let TOTAL_SCROLL_LENGTH = scrollConfig.totalLength
+let TOTAL_SCROLL_LENGTH = calculateScrollLength()
 
 /* ================= INIT ================= */
 
@@ -114,50 +83,42 @@ export function initScrollVideo() {
     video.classList.add("is-blurred")
 
     const totalPlayable = video.duration - HERO_TIME
-    const PAUSE_FRACTION = PAUSE_PIXELS / TOTAL_SCROLL_LENGTH
 
-    /* ================= FRAME POSITIONS IN SCROLL ================= */
-    const framesBeforeSafety = SAFETY_FRAME - HERO_FRAME
-    const framesBeforeHotspot = HOTSPOT_FRAME - HERO_FRAME
-    const framesBeforeWhy = WHY_FRAME - HERO_FRAME
-    const framesBeforeHow = HOW_FRAME - HERO_FRAME
-    const framesBeforeFeatures = FEATURES_FRAME - HERO_FRAME
-    const framesBeforeProtection = PROTECTION_FRAME - HERO_FRAME
+    /* ================= FRAME POSITIONS IN SCROLL (Percentage-based) ================= */
+    // Define scroll positions as percentages of total scroll
+    // Each section gets equal spacing with pause zones
+
+    const PAUSE_DURATION = 0.10 // 10% of scroll for each pause
+    const TRANSITION_DURATION = 0.15 // 15% for transitions between sections
 
     /* ================= SAFETY (FRAME 148) ================= */
-    const safetyScrollPos = (framesBeforeSafety * PIXELS_PER_FRAME) / TOTAL_SCROLL_LENGTH
-    const safetyStart = safetyScrollPos
-    const safetyEnd = safetyStart + PAUSE_FRACTION
+    const safetyStart = 0.02
+    const safetyEnd = safetyStart + PAUSE_DURATION
     const SAFETY_RESUME_TIME = Math.min(video.duration, (SAFETY_FRAME + 1) / FPS)
 
     /* ================= HOTSPOTS (FRAME 274) ================= */
-    const hotspotScrollPos = ((framesBeforeHotspot * PIXELS_PER_FRAME) + PAUSE_PIXELS) / TOTAL_SCROLL_LENGTH
-    const hotspotStart = hotspotScrollPos
-    const hotspotEnd = hotspotStart + PAUSE_FRACTION
+    const hotspotStart = safetyEnd + TRANSITION_DURATION
+    const hotspotEnd = hotspotStart + PAUSE_DURATION
     const HOTSPOT_RESUME_TIME = Math.min(video.duration, (HOTSPOT_FRAME + 1) / FPS)
 
     /* ================= WHY STRNGR (FRAME 368) ================= */
-    const whyScrollPos = ((framesBeforeWhy * PIXELS_PER_FRAME) + (2 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
-    const whyStart = whyScrollPos
-    const whyEnd = whyStart + PAUSE_FRACTION
+    const whyStart = hotspotEnd + TRANSITION_DURATION
+    const whyEnd = whyStart + PAUSE_DURATION
     const WHY_RESUME_TIME = Math.min(video.duration, (WHY_FRAME + 1) / FPS)
 
     /* ================= HOW IT WORKS (FRAME 434) ================= */
-    const howScrollPos = ((framesBeforeHow * PIXELS_PER_FRAME) + (3 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
-    const howStart = howScrollPos
-    const howEnd = howStart + PAUSE_FRACTION
+    const howStart = whyEnd + TRANSITION_DURATION
+    const howEnd = howStart + PAUSE_DURATION
     const HOW_RESUME_TIME = Math.min(video.duration, (HOW_FRAME + 1) / FPS)
 
     /* ================= FEATURES (FRAME 505) ================= */
-    const featuresScrollPos = ((framesBeforeFeatures * PIXELS_PER_FRAME) + (4 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
-    const featuresStart = featuresScrollPos
-    const featuresEnd = featuresStart + PAUSE_FRACTION
+    const featuresStart = howEnd + TRANSITION_DURATION
+    const featuresEnd = featuresStart + PAUSE_DURATION
     const FEATURES_RESUME_TIME = Math.min(video.duration, (FEATURES_FRAME + 1) / FPS)
 
     /* ================= PROTECTION (FRAME 647) ================= */
-    const protectionScrollPos = ((framesBeforeProtection * PIXELS_PER_FRAME) + (5 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
-    const protectionStart = protectionScrollPos
-    const protectionEnd = protectionStart + PAUSE_FRACTION
+    const protectionStart = featuresEnd + TRANSITION_DURATION
+    const protectionEnd = protectionStart + PAUSE_DURATION
     const PROTECTION_RESUME_TIME = Math.min(video.duration, (PROTECTION_FRAME + 1) / FPS)
 
     /* ================= HELPERS ================= */
@@ -342,10 +303,7 @@ export function initScrollVideo() {
       clearTimeout(resizeTimeout)
       resizeTimeout = setTimeout(() => {
         // Recalculate scroll length for new viewport size
-        scrollConfig = calculateScrollLength()
-        PIXELS_PER_FRAME = scrollConfig.pixelsPerFrame
-        PAUSE_PIXELS = scrollConfig.pausePixels
-        TOTAL_SCROLL_LENGTH = scrollConfig.totalLength
+        TOTAL_SCROLL_LENGTH = calculateScrollLength()
 
         // Refresh ScrollTrigger to apply new scroll length
         ScrollTrigger.refresh()
