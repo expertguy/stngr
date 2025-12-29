@@ -6,11 +6,24 @@
   opacity: 0;
   pointer-events: none;
   z-index: 12;
-  transition: opacity 0.3s ease;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .hotspot.visible {
   opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes hotspotAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hotspot-content {
@@ -93,6 +106,7 @@
 .hotspot-shell {
   top: 28%;
   left: 18%;
+  transition-delay: 0.3s;
 }
 
 .hotspot-shell .hotspot-line {
@@ -103,6 +117,7 @@
 .hotspot-outer {
   top: 50%;
   left: 20%;
+  transition-delay: 0s;
 }
 
 .hotspot-outer .hotspot-line {
@@ -113,6 +128,7 @@
 .hotspot-inner {
   top: 46%;
   right: 15%;
+  transition-delay: 0.6s;
 }
 
 .hotspot-inner .hotspot-line {
