@@ -45,7 +45,7 @@ function calculateScrollLength() {
 
   // Calculate total scroll as a multiple of viewport height
   // This ensures consistent experience across all screen sizes
-  const VIEWPORT_MULTIPLIER = 8 // Total scroll = 8x viewport height
+  const VIEWPORT_MULTIPLIER = 15 // Total scroll = 15x viewport height
 
   return viewportHeight * VIEWPORT_MULTIPLIER
 }
