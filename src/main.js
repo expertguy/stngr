@@ -9,16 +9,19 @@ import "./styles/blur-sections.css"
 import "./styles/features.css"
 import "./styles/newsletter.css"
 import "./styles/footer.css"
+import "./styles/cookie-consent.css"
 import "./styles/debug.css"
 
 import { Header } from "./components/Header"
 import { VideoScroll } from "./components/VideoScroll"
 import { Newsletter } from "./components/Newsletter"
 import { Footer } from "./components/Footer"
+import { CookieConsent } from "./components/CookieConsent"
 
 import { initScrollVideo } from "./js/scrollVideo"
 import { initHeaderScroll } from "./js/headerScroll"
 import { initSmoothScroll } from "./js/smoothScroll"
+import { initCookieConsent } from "./js/cookieConsent"
 
 const app = document.getElementById("app")
 
@@ -27,8 +30,10 @@ app.innerHTML = `
   ${VideoScroll()}
   ${Newsletter()}
   ${Footer()}
+  ${CookieConsent()}
 `
 
 initHeaderScroll()
 initScrollVideo()
 initSmoothScroll()
+initCookieConsent()

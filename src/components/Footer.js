@@ -16,6 +16,10 @@ export function Footer() {
         <a href="#holdInfo" class="footer-link">Safety</a>
         <span class="footer-separator"></span>
         <a href="#newsletter" class="footer-link">Newsletter</a>
+        <span class="footer-separator"></span>
+        <a href="#terms" class="footer-link">Terms and Conditions</a>
+        <span class="footer-separator"></span>
+        <a href="#privacy" class="footer-link">Privacy Policy</a>
       </nav>
       <p class="footer-copyright">© 2026 STNGR. All rights reserved.</p>
     </footer>
