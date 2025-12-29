@@ -152,7 +152,7 @@
 }
 
 .hotspot-shell .hotspot-line {
-  width: clamp(100px, 25vw, 400px);
+  width: 80%;
   flex: none;
 }
 
@@ -162,7 +162,7 @@
 }
 
 .hotspot-outer .hotspot-line {
-  width: clamp(50px, 4vw, 150px);
+  width: 10%;
   flex: none;
 }
 
@@ -184,7 +184,7 @@
 }
 
 .hotspot-inner .hotspot-line {
-  width: clamp(80px, 15vw, 300px);
+  width: 20%;
   flex: none;
   transform-origin: left center;
 }
