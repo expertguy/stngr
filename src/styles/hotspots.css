@@ -105,7 +105,17 @@
   left: 10%;
 }
 
+.hotspot-outer .hotspot-line {
+  width: 68px;
+  flex: none;
+}
+
 .hotspot-inner {
   top: 55%;
   right: 10%;
+}
+
+.hotspot-inner .hotspot-line {
+  width: 80px;
+  flex: none;
 }
