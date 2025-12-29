@@ -42,11 +42,35 @@ const PIXELS_PER_FRAME = 3
 const PAUSE_PIXELS = 800
 const TOTAL_SCROLL_LENGTH = (TOTAL_FRAMES * PIXELS_PER_FRAME) + (6 * PAUSE_PIXELS)
 
+/* ================= DYNAMIC HEIGHT ================= */
+
+function setScrollContainerHeight() {
+  const scrollContainer = document.querySelector('.scroll-container')
+  if (!scrollContainer) return
+
+  const vh = window.innerHeight
+  const requiredHeightInVh = (TOTAL_SCROLL_LENGTH / vh) * 100
+
+  // Add 100vh for the initial viewport + the scroll length
+  const totalHeightInVh = 100 + requiredHeightInVh
+
+  scrollContainer.style.height = `${totalHeightInVh}vh`
+}
+
 /* ================= INIT ================= */
 
 export function initScrollVideo() {
   const video = document.getElementById("scrollVideo")
   const frameEl = document.getElementById("frameCount")
+
+  // Set initial height
+  setScrollContainerHeight()
+
+  // Update height on resize
+  window.addEventListener('resize', () => {
+    setScrollContainerHeight()
+    ScrollTrigger.refresh()
+  })
 
   const heroOverlay = document.getElementById("heroOverlay")
   const videoHeroOverlay = document.getElementById("videoHeroOverlay")

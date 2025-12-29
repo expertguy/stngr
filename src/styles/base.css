@@ -19,7 +19,7 @@ main {
 }
 
 .scroll-container {
-  height: 650vh;
+  /* Height is set dynamically via JavaScript based on viewport height */
   margin: 0;
   padding: 0;
 }
