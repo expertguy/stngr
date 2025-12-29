@@ -23,18 +23,16 @@ export function VideoScroll() {
           class="hero-overlay-content"
           id="heroOverlay"
         >
-          <span class="badge">
-            LIMITED FIRST RUN COMING SPRING 2026
-          </span>
+          <div class="badge">
+            <span class="badge-text badge-text-muted">LIMITED FIRST RUN</span>
+            <span class="badge-dot"></span>
+            <span class="badge-text badge-text-primary">SPRING 2026</span>
+          </div>
 
-          <h1>
-            Protection<br />
-            Without<br />
-            Attention
-          </h1>
+          <h1>Protection Without Attention</h1>
 
           <p class="subtitle">
-            Discreet personal protection engineered for the moments that matter
+            Discreet personal protection engineered for the moments that matter.
           </p>
 
           <div class="cta">
