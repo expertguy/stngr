@@ -4,7 +4,7 @@
   justify-content: flex-start;
   align-items: center;
   pointer-events: none;
-  z-index: 12;
+  z-index: 20;
 }
 
 .hotspot-dot-wrapper {
