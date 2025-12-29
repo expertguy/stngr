@@ -32,7 +32,7 @@
 .features-content {
   width: 100%;
   max-width: 1600px;
-  padding: 0 80px;
+  padding: 0 50px;
   display: flex;
   flex-direction: column;
   gap: 64px;
