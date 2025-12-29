@@ -142,48 +142,35 @@
 }
 
 @media (max-width: 1024px) {
+  .features-section {
+    padding-top: 80px;
+  }
+
   .features-content {
-    padding: 0 40px;
-    gap: 48px;
+    padding: 0 32px;
+    gap: 40px;
   }
 
   .features-cards {
     flex-direction: column;
     align-items: stretch;
+    gap: 16px;
   }
 
   .feature-card {
     width: 100%;
     max-width: 100%;
     min-width: 100%;
+    padding: 20px;
+    gap: 16px;
   }
 
   .features-title {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
   }
 
   .features-subtitle {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .features-content {
-    padding: 0 16px;
-    gap: 40px;
-  }
-
-  .features-title {
-    font-size: 2rem;
-  }
-
-  .features-subtitle {
-    font-size: 0.9375rem;
-  }
-
-  .feature-card {
-    padding: 24px;
-    gap: 20px;
+    font-size: 0.875rem;
   }
 
   .feature-icon {
@@ -197,21 +184,90 @@
   }
 
   .feature-card-title {
+    font-size: 0.6875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .features-section {
+    padding-top: 70px;
+  }
+
+  .features-content {
+    padding: 0 20px;
+    gap: 32px;
+  }
+
+  .features-cards {
+    gap: 12px;
+  }
+
+  .features-title {
+    font-size: 1.5rem;
+  }
+
+  .features-subtitle {
     font-size: 0.8125rem;
+  }
+
+  .feature-card {
+    padding: 18px;
+    gap: 14px;
+  }
+
+  .feature-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .feature-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .feature-card-title {
+    font-size: 0.6875rem;
   }
 }
 
 @media (max-width: 480px) {
+  .features-section {
+    padding-top: 60px;
+  }
+
+  .features-content {
+    padding: 0 16px;
+    gap: 28px;
+  }
+
+  .features-cards {
+    gap: 10px;
+  }
+
   .features-title {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
   }
 
   .features-subtitle {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
   }
 
   .feature-card {
-    padding: 20px;
-    gap: 16px;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .feature-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .feature-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .feature-card-title {
+    font-size: 0.625rem;
   }
 }
