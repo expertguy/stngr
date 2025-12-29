@@ -52,7 +52,7 @@
 
 .features-title {
   position: absolute;
-  top: 120px;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   font-size: 48px;
