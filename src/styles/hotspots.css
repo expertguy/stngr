@@ -135,7 +135,7 @@
 }
 
 .hotspot-shell {
-  top: 40%;
+  top: 28%;
   left: 18%;
 }
 
@@ -162,7 +162,7 @@
 }
 
 .hotspot-outer .hotspot-line {
-  width: 68px;
+  width: 40%;
   flex: none;
 }
 
