@@ -29,7 +29,11 @@ export function VideoScroll() {
             <span class="badge-text badge-text-primary">SPRING 2026</span>
           </div>
 
-          <h1>Protection Without Attention</h1>
+          <h1>
+            <span>Protection</span><br />
+            <span>Without</span><br />
+            <span>Attention</span>
+          </h1>
 
           <p class="subtitle">
             Discreet personal protection engineered for the moments that matter.

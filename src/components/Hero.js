@@ -22,9 +22,9 @@ export function Hero() {
         <span class="badge">LIMITED FIRST RUN COMING SPRING 2026</span>
 
         <h1>
-          Protection<br />
-          Without<br />
-          Attention
+          <span class="hero-word" style="--delay: 0">Protection</span><br />
+          <span class="hero-word" style="--delay: 1">Without</span><br />
+          <span class="hero-word" style="--delay: 2">Attention</span>
         </h1>
 
         <p class="subtitle">
