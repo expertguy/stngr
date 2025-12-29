@@ -16,10 +16,7 @@ export function Features() {
                 <path d="M14 38C16.2091 38 18 36.2091 18 34C18 31.7909 16.2091 30 14 30C11.7909 30 10 31.7909 10 34C10 36.2091 11.7909 38 14 38Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
               </svg>
             </div>
-            <div class="feature-card-content">
-              <h3 class="feature-card-title">Urban Commuting</h3>
-              <p class="feature-card-description">Navigate busy streets and public transport with confidence.</p>
-            </div>
+            <div class="feature-card-title">Urban Commuting</div>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -28,10 +25,7 @@ export function Features() {
                 <path d="M4.00976 15.9789L9.00078 12.9989C9.00938 12.9937 9.02046 12.9958 9.0267 13.0036L13.0041 18.0106L27.9539 11.0815C35.9527 7.50424 44.2127 13.7329 43.9997 16.486C43.8871 16.9934 43.7047 17.9676 42.4337 18.35L30.0271 22.0194L28.0073 27.0316C28.0051 27.037 28.0007 27.0412 27.9951 27.043L19.0921 29.9856C19.0765 29.9908 19.0617 29.976 19.0668 29.9604L21.0001 24.0238L8.01532 27.035C8.00546 27.0372 7.99544 27.0318 7.992 27.0222L4.0012 16.0028C3.99794 15.9938 4.00152 15.9838 4.00976 15.9789Z" stroke="white" stroke-width="1.5"/>
               </svg>
             </div>
-            <div class="feature-card-content">
-              <h3 class="feature-card-title">Travel & Transit</h3>
-              <p class="feature-card-description">Stay protected during flights, trains, and journeys.</p>
-            </div>
+            <div class="feature-card-title">Travel & Transit</div>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -39,10 +33,7 @@ export function Features() {
                 <path d="M43 28.1568C40.6006 29.4378 37.8602 30.1642 34.9502 30.1642C25.4982 30.1642 17.8358 22.5018 17.8358 13.0497C17.8358 10.1397 18.5621 7.39936 19.8433 5C11.3353 6.99396 5 14.6303 5 23.7462C5 34.3798 13.6202 43 24.2538 43C33.3698 43 41.006 36.6648 43 28.1568Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <div class="feature-card-content">
-              <h3 class="feature-card-title">Night Walks</h3>
-              <p class="feature-card-description">Walk with quiet confidence after dark.</p>
-            </div>
+            <div class="feature-card-title">Night Walks</div>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -55,10 +46,7 @@ export function Features() {
                 <path d="M30 10C30 6.6863 27.3138 4 24 4C20.6862 4 18 6.6863 18 10" stroke="white" stroke-width="1.5"/>
               </svg>
             </div>
-            <div class="feature-card-content">
-              <h3 class="feature-card-title">Everyday Carry</h3>
-              <p class="feature-card-description">Discreet protection you can take anywhere.</p>
-            </div>
+            <div class="feature-card-title">Everyday Carry</div>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
@@ -69,10 +57,7 @@ export function Features() {
                 <path d="M42.0017 6.00098L28.0625 19.9379" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
               </svg>
             </div>
-            <div class="feature-card-content">
-              <h3 class="feature-card-title">Minimalist</h3>
-              <p class="feature-card-description">Lightweight, unobtrusive, and always ready.</p>
-            </div>
+            <div class="feature-card-title">Minimalist</div>
           </div>
         </div>
       </div>
