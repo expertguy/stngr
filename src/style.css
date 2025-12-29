@@ -18,13 +18,13 @@ html, body {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   height: 72px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 48px;
+  padding: 0 60px;
   z-index: 100;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
   transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
@@ -33,21 +33,70 @@ html, body {
   opacity: 0;
 }
 
-.site-header nav {
+.header-logo {
+  width: 300px;
+  height: 44px;
   display: flex;
-  gap: 24px;
   align-items: center;
 }
 
-.site-header a {
-  color: white;
-  text-decoration: none;
-  opacity: 0.8;
+.header-logo img {
+  width: 161px;
+  height: 24px;
+  display: block;
 }
 
-.logo img {
-  height: 20px;
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-link {
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  transition: opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  opacity: 0.7;
+}
+
+.nav-separator {
+  width: 14px;
+  height: 1px;
+  background: white;
+  opacity: 0.3;
+  transform: rotate(120deg);
   display: block;
+}
+
+.header-cta {
+  width: 300px;
+  height: 44px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.btn-cta {
+  background: white;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 12px 18px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btn-cta:hover {
+  opacity: 0.9;
 }
 
 /* ================= VIDEO + HERO ================= */
