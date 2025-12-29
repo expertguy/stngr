@@ -1,5 +1,6 @@
 import { Hero } from './Hero'
 import { Safety } from './Safety'
+import { SafetyRight } from './SafetyRight'
 import { Hotspots } from './Hotspots'
 import { WhyStngr } from './WhyStngr'
 import { Process } from './Process'
@@ -20,6 +21,7 @@ export function VideoScroll() {
         ${Hero()}
         ${DebugFrame()}
         ${Safety()}
+        ${SafetyRight()}
         ${Hotspots()}
         ${WhyStngr()}
         ${Process()}

@@ -37,6 +37,11 @@ const FEATURES_FRAME = 505
 const FEATURES_TIME = FEATURES_FRAME / FPS
 const FEATURES_SCROLL_FRACTION = 0.06
 
+// HOLD 6 (SAFETY RIGHT - FRAME 647)
+const SAFETY_RIGHT_FRAME = 647
+const SAFETY_RIGHT_TIME = SAFETY_RIGHT_FRAME / FPS
+const SAFETY_RIGHT_SCROLL_FRACTION = 0.06
+
 /* ================= INIT ================= */
 
 export function initScrollVideo() {
@@ -46,6 +51,7 @@ export function initScrollVideo() {
   const heroOverlay = document.getElementById("heroOverlay")
   const videoHeroOverlay = document.getElementById("videoHeroOverlay")
   const holdInfo = document.getElementById("holdInfo")
+  const holdInfoRight = document.getElementById("holdInfoRight")
 
   const hotspotShell = document.getElementById("hotspotShell")
   const hotspotOuter = document.getElementById("hotspotOuter")
@@ -111,6 +117,15 @@ export function initScrollVideo() {
 
     const FEATURES_RESUME_TIME =
       Math.min(video.duration, FEATURES_TIME + 1 / FPS)
+
+    /* ================= HOLD 6 (SAFETY RIGHT) ================= */
+    const safetyRightStart =
+      (SAFETY_RIGHT_TIME - HERO_TIME) / totalPlayable
+    const safetyRightEnd =
+      safetyRightStart + SAFETY_RIGHT_SCROLL_FRACTION
+
+    const SAFETY_RIGHT_RESUME_TIME =
+      Math.min(video.duration, SAFETY_RIGHT_TIME + 1 / FPS)
 
     /* ================= HELPERS ================= */
 
@@ -208,10 +223,21 @@ export function initScrollVideo() {
           t = FEATURES_TIME
         }
 
-        /* ---------- AFTER HOLD 5 ---------- */
+        /* ---------- BETWEEN HOLDS 5 & 6 ---------- */
+        else if (p > featuresEnd && p < safetyRightStart) {
+          const local = invLerp(featuresEnd, safetyRightStart, p)
+          t = lerp(FEATURES_RESUME_TIME, SAFETY_RIGHT_TIME, local)
+        }
+
+        /* ---------- HOLD 6 (SAFETY RIGHT - FRAME 647) ---------- */
+        else if (p >= safetyRightStart && p <= safetyRightEnd) {
+          t = SAFETY_RIGHT_TIME
+        }
+
+        /* ---------- AFTER HOLD 6 ---------- */
         else {
-          const local = invLerp(featuresEnd, 1, p)
-          t = lerp(FEATURES_RESUME_TIME, video.duration, local)
+          const local = invLerp(safetyRightEnd, 1, p)
+          t = lerp(SAFETY_RIGHT_RESUME_TIME, video.duration, local)
         }
 
         /* ---------- APPLY TIME ---------- */
@@ -226,6 +252,13 @@ export function initScrollVideo() {
           holdInfo?.classList.add("visible")
         } else {
           holdInfo?.classList.remove("visible")
+        }
+
+        // SAFETY RIGHT (frame 647)
+        if (frame === SAFETY_RIGHT_FRAME) {
+          holdInfoRight?.classList.add("visible")
+        } else {
+          holdInfoRight?.classList.remove("visible")
         }
 
         // HOTSPOTS (frame 274 ONLY)
