@@ -1,6 +1,7 @@
 .newsletter {
   width: 100%;
   padding: 100px 120px;
+  margin-top: 0;
   background: rgba(8, 13, 20, 0.30);
   backdrop-filter: blur(60px);
   display: flex;
