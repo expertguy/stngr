@@ -19,14 +19,15 @@
 
 .features-columns {
   display: flex;
-  gap: 64px;
-  padding: 0 80px;
-  max-width: 800px;
-  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  width: 70%;
 }
 
 .features-column {
-  flex: 1;
+  width: 320px;
   display: flex;
   flex-direction: column;
   gap: 24px;
