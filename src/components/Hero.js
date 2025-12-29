@@ -37,8 +37,12 @@ export function Hero() {
         </div>
 
         <div class="scroll-indicator">
-          SCROLL
-          <span></span>
+          <span class="scroll-text">SCROLL</span>
+          <div class="scroll-arrow">
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L6 6L11 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
       </div>
 

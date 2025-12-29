@@ -320,16 +320,46 @@ video.is-blurred {
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+}
+
+.scroll-text {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+}
+
+.scroll-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.scroll-arrow svg {
   opacity: 0.6;
 }
 
-.scroll-indicator span {
-  display: block;
-  width: 1px;
-  height: 24px;
-  background: white;
-  margin: 8px auto 0;
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
 }
 
 /* ================= HOLD CHAPTER (FRAME 148) ================= */
