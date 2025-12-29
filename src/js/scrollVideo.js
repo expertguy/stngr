@@ -40,7 +40,7 @@ const FEATURES_SCROLL_FRACTION = 0.06
 // HOLD 6 (SAFETY RIGHT - FRAME 647)
 const SAFETY_RIGHT_FRAME = 647
 const SAFETY_RIGHT_TIME = SAFETY_RIGHT_FRAME / FPS
-const SAFETY_RIGHT_SCROLL_FRACTION = 0.06
+const SAFETY_RIGHT_SCROLL_FRACTION = 0.08
 
 /* ================= INIT ================= */
 
@@ -146,7 +146,7 @@ export function initScrollVideo() {
     ScrollTrigger.create({
       trigger: ".video-section",
       start: "top top",
-      end: "+=5000",
+      end: "+=4000",
       scrub: 0.4,
       pin: true,
 
@@ -230,14 +230,8 @@ export function initScrollVideo() {
         }
 
         /* ---------- HOLD 6 (SAFETY RIGHT - FRAME 647) ---------- */
-        else if (p >= safetyRightStart && p <= safetyRightEnd) {
-          t = SAFETY_RIGHT_TIME
-        }
-
-        /* ---------- AFTER HOLD 6 ---------- */
         else {
-          const local = invLerp(safetyRightEnd, 1, p)
-          t = lerp(SAFETY_RIGHT_RESUME_TIME, video.duration, local)
+          t = SAFETY_RIGHT_TIME
         }
 
         /* ---------- APPLY TIME ---------- */
