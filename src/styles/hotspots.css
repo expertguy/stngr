@@ -162,7 +162,7 @@
 }
 
 .hotspot-outer .hotspot-line {
-  width: clamp(50px, 8vw, 150px);
+  width: clamp(50px, 4vw, 150px);
   flex: none;
 }
 
