@@ -1,10 +1,11 @@
-import logo from "../assets/logo.png"
-
 export function Newsletter() {
   return `
     <section class="newsletter" id="newsletter">
       <div class="newsletter-icon">
-        <img src="${logo}" alt="STNGR logo" class="newsletter-logo" />
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 30L40 50L60 30" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="15" y="20" width="50" height="40" rx="2" stroke="white" stroke-width="2"/>
+        </svg>
       </div>
       <div class="newsletter-content">
         <h2 class="newsletter-title">Be First to Know</h2>
