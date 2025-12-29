@@ -206,16 +206,38 @@
 .mobile-nav-cta {
   background: white;
   color: black;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.25;
+  letter-spacing: 0.35px;
   text-align: center;
-  border: none;
+  border: 1px solid transparent;
   margin-top: 20px;
-  padding: 16px 0;
+  padding: 12px 24px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
 }
 
 .mobile-nav-cta:hover {
   background: transparent;
   color: white;
-  border: 1px solid white;
+  border-color: white;
+  padding-left: 24px;
+}
+
+.mobile-nav-cta:active {
+  background: transparent;
+  color: white;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.mobile-nav-cta:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
 }
 
 @media (max-width: 1024px) {
