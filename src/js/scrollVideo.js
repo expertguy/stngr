@@ -15,32 +15,32 @@ const HERO_TIME = HERO_FRAME / FPS
 // SAFETY (FRAME 148)
 const SAFETY_FRAME = 148
 const SAFETY_TIME = SAFETY_FRAME / FPS
-const SAFETY_SCROLL_FRACTION = 0.12
+const SAFETY_SCROLL_FRACTION = 0.20
 
 // HOTSPOTS (FRAME 274)
 const HOTSPOT_FRAME = 274
 const HOTSPOT_TIME = HOTSPOT_FRAME / FPS
-const HOTSPOT_SCROLL_FRACTION = 0.12
+const HOTSPOT_SCROLL_FRACTION = 0.20
 
 // WHY STRNGR (FRAME 368)
 const WHY_FRAME = 368
 const WHY_TIME = WHY_FRAME / FPS
-const WHY_SCROLL_FRACTION = 0.12
+const WHY_SCROLL_FRACTION = 0.20
 
 // HOW IT WORKS (FRAME 434)
 const HOW_FRAME = 434
 const HOW_TIME = HOW_FRAME / FPS
-const HOW_SCROLL_FRACTION = 0.12
+const HOW_SCROLL_FRACTION = 0.20
 
 // FEATURES (FRAME 505)
 const FEATURES_FRAME = 505
 const FEATURES_TIME = FEATURES_FRAME / FPS
-const FEATURES_SCROLL_FRACTION = 0.12
+const FEATURES_SCROLL_FRACTION = 0.20
 
 // PROTECTION (FRAME 647)
 const PROTECTION_FRAME = 647
 const PROTECTION_TIME = PROTECTION_FRAME / FPS
-const PROTECTION_SCROLL_FRACTION = 0.15
+const PROTECTION_SCROLL_FRACTION = 0.20
 
 /* ================= INIT ================= */
 
@@ -146,8 +146,8 @@ export function initScrollVideo() {
     ScrollTrigger.create({
       trigger: ".video-section",
       start: "top top",
-      end: "+=4000",
-      scrub: 0.4,
+      end: "+=8000",
+      scrub: 0.5,
       pin: true,
       pinSpacing: false,
 
