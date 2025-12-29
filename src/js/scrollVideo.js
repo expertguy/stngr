@@ -15,32 +15,32 @@ const HERO_TIME = HERO_FRAME / FPS
 // SAFETY (FRAME 148)
 const SAFETY_FRAME = 148
 const SAFETY_TIME = SAFETY_FRAME / FPS
-const SAFETY_SCROLL_FRACTION = 0.20
 
 // HOTSPOTS (FRAME 274)
 const HOTSPOT_FRAME = 274
 const HOTSPOT_TIME = HOTSPOT_FRAME / FPS
-const HOTSPOT_SCROLL_FRACTION = 0.20
 
 // WHY STRNGR (FRAME 368)
 const WHY_FRAME = 368
 const WHY_TIME = WHY_FRAME / FPS
-const WHY_SCROLL_FRACTION = 0.20
 
 // HOW IT WORKS (FRAME 434)
 const HOW_FRAME = 434
 const HOW_TIME = HOW_FRAME / FPS
-const HOW_SCROLL_FRACTION = 0.20
 
 // FEATURES (FRAME 505)
 const FEATURES_FRAME = 505
 const FEATURES_TIME = FEATURES_FRAME / FPS
-const FEATURES_SCROLL_FRACTION = 0.20
 
 // PROTECTION (FRAME 647)
 const PROTECTION_FRAME = 647
 const PROTECTION_TIME = PROTECTION_FRAME / FPS
-const PROTECTION_SCROLL_FRACTION = 0.20
+
+// SCROLL CALCULATION
+const TOTAL_FRAMES = PROTECTION_FRAME - HERO_FRAME
+const PIXELS_PER_FRAME = 3
+const PAUSE_PIXELS = 800
+const TOTAL_SCROLL_LENGTH = (TOTAL_FRAMES * PIXELS_PER_FRAME) + (6 * PAUSE_PIXELS)
 
 /* ================= INIT ================= */
 
@@ -72,60 +72,51 @@ export function initScrollVideo() {
     video.classList.add("is-blurred")
 
     const totalPlayable = video.duration - HERO_TIME
+    const PAUSE_FRACTION = PAUSE_PIXELS / TOTAL_SCROLL_LENGTH
+
+    /* ================= FRAME POSITIONS IN SCROLL ================= */
+    const framesBeforeSafety = SAFETY_FRAME - HERO_FRAME
+    const framesBeforeHotspot = HOTSPOT_FRAME - HERO_FRAME
+    const framesBeforeWhy = WHY_FRAME - HERO_FRAME
+    const framesBeforeHow = HOW_FRAME - HERO_FRAME
+    const framesBeforeFeatures = FEATURES_FRAME - HERO_FRAME
+    const framesBeforeProtection = PROTECTION_FRAME - HERO_FRAME
 
     /* ================= SAFETY (FRAME 148) ================= */
-    const safetyStart =
-      (SAFETY_TIME - HERO_TIME) / totalPlayable
-    const safetyEnd =
-      safetyStart + SAFETY_SCROLL_FRACTION
-
-    const SAFETY_RESUME_TIME =
-      Math.min(video.duration, SAFETY_TIME + 1 / FPS)
+    const safetyScrollPos = (framesBeforeSafety * PIXELS_PER_FRAME) / TOTAL_SCROLL_LENGTH
+    const safetyStart = safetyScrollPos
+    const safetyEnd = safetyStart + PAUSE_FRACTION
+    const SAFETY_RESUME_TIME = Math.min(video.duration, (SAFETY_FRAME + 1) / FPS)
 
     /* ================= HOTSPOTS (FRAME 274) ================= */
-    const hotspotStart =
-      (HOTSPOT_TIME - HERO_TIME) / totalPlayable
-    const hotspotEnd =
-      hotspotStart + HOTSPOT_SCROLL_FRACTION
-
-    const HOTSPOT_RESUME_TIME =
-      Math.min(video.duration, HOTSPOT_TIME + 1 / FPS)
+    const hotspotScrollPos = ((framesBeforeHotspot * PIXELS_PER_FRAME) + PAUSE_PIXELS) / TOTAL_SCROLL_LENGTH
+    const hotspotStart = hotspotScrollPos
+    const hotspotEnd = hotspotStart + PAUSE_FRACTION
+    const HOTSPOT_RESUME_TIME = Math.min(video.duration, (HOTSPOT_FRAME + 1) / FPS)
 
     /* ================= WHY STRNGR (FRAME 368) ================= */
-    const whyStart =
-      (WHY_TIME - HERO_TIME) / totalPlayable
-    const whyEnd =
-      whyStart + WHY_SCROLL_FRACTION
-
-    const WHY_RESUME_TIME =
-      Math.min(video.duration, WHY_TIME + 1 / FPS)
+    const whyScrollPos = ((framesBeforeWhy * PIXELS_PER_FRAME) + (2 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
+    const whyStart = whyScrollPos
+    const whyEnd = whyStart + PAUSE_FRACTION
+    const WHY_RESUME_TIME = Math.min(video.duration, (WHY_FRAME + 1) / FPS)
 
     /* ================= HOW IT WORKS (FRAME 434) ================= */
-    const howStart =
-      (HOW_TIME - HERO_TIME) / totalPlayable
-    const howEnd =
-      howStart + HOW_SCROLL_FRACTION
-
-    const HOW_RESUME_TIME =
-      Math.min(video.duration, HOW_TIME + 1 / FPS)
+    const howScrollPos = ((framesBeforeHow * PIXELS_PER_FRAME) + (3 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
+    const howStart = howScrollPos
+    const howEnd = howStart + PAUSE_FRACTION
+    const HOW_RESUME_TIME = Math.min(video.duration, (HOW_FRAME + 1) / FPS)
 
     /* ================= FEATURES (FRAME 505) ================= */
-    const featuresStart =
-      (FEATURES_TIME - HERO_TIME) / totalPlayable
-    const featuresEnd =
-      featuresStart + FEATURES_SCROLL_FRACTION
-
-    const FEATURES_RESUME_TIME =
-      Math.min(video.duration, FEATURES_TIME + 1 / FPS)
+    const featuresScrollPos = ((framesBeforeFeatures * PIXELS_PER_FRAME) + (4 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
+    const featuresStart = featuresScrollPos
+    const featuresEnd = featuresStart + PAUSE_FRACTION
+    const FEATURES_RESUME_TIME = Math.min(video.duration, (FEATURES_FRAME + 1) / FPS)
 
     /* ================= PROTECTION (FRAME 647) ================= */
-    const protectionStart =
-      (PROTECTION_TIME - HERO_TIME) / totalPlayable
-    const protectionEnd =
-      protectionStart + PROTECTION_SCROLL_FRACTION
-
-    const PROTECTION_RESUME_TIME =
-      Math.min(video.duration, PROTECTION_TIME + 1 / FPS)
+    const protectionScrollPos = ((framesBeforeProtection * PIXELS_PER_FRAME) + (5 * PAUSE_PIXELS)) / TOTAL_SCROLL_LENGTH
+    const protectionStart = protectionScrollPos
+    const protectionEnd = protectionStart + PAUSE_FRACTION
+    const PROTECTION_RESUME_TIME = Math.min(video.duration, (PROTECTION_FRAME + 1) / FPS)
 
     /* ================= HELPERS ================= */
 
@@ -146,7 +137,7 @@ export function initScrollVideo() {
     ScrollTrigger.create({
       trigger: ".video-section",
       start: "top top",
-      end: "+=8000",
+      end: `+=${TOTAL_SCROLL_LENGTH}`,
       scrub: 0.5,
       pin: true,
       pinSpacing: false,
