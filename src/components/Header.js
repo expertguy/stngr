@@ -8,17 +8,17 @@ export function Header() {
       </div>
 
       <nav class="header-nav">
-        <a href="#features" class="nav-link">Features</a>
+        <a href="#featuresOverlay" class="nav-link">Features</a>
         <span class="nav-separator"></span>
-        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#howItWorks" class="nav-link">How It Works</a>
         <span class="nav-separator"></span>
-        <a href="#why-stngr" class="nav-link">Why STNGR</a>
+        <a href="#whyStngr" class="nav-link">Why STNGR</a>
         <span class="nav-separator"></span>
-        <a href="#safety" class="nav-link">Safety</a>
+        <a href="#holdInfo" class="nav-link">Safety</a>
       </nav>
 
       <div class="header-cta">
-        <button class="btn-cta">Get Updates</button>
+        <a href="#newsletter" class="btn-cta" style="text-decoration: none; display: inline-block;">Get Updates</a>
       </div>
     </header>
   `

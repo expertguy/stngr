@@ -18,6 +18,7 @@ import { Footer } from "./components/Footer"
 
 import { initScrollVideo } from "./js/scrollVideo"
 import { initHeaderScroll } from "./js/headerScroll"
+import { initSmoothScroll } from "./js/smoothScroll"
 
 const app = document.getElementById("app")
 
@@ -30,3 +31,4 @@ app.innerHTML = `
 
 initHeaderScroll()
 initScrollVideo()
+initSmoothScroll()
