@@ -1,5 +1,5 @@
-import { HeroOverlay } from './HeroOverlay'
-import { HoldInfo } from './HoldInfo'
+import { Hero } from './Hero'
+import { Safety } from './Safety'
 import { Hotspots } from './Hotspots'
 import { DebugFrame } from './DebugFrame'
 
@@ -14,15 +14,10 @@ export function VideoScroll() {
           preload="auto"
         ></video>
 
-        ${HeroOverlay()}
+        ${Hero()}
         ${DebugFrame()}
-        ${HoldInfo()}
+        ${Safety()}
         ${Hotspots()}
-      </section>
-
-      <section class="content">
-        <h2>Built for Real Life</h2>
-        <p>Designed to disappear until you need it.</p>
       </section>
     </main>
   `

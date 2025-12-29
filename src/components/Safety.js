@@ -1,4 +1,4 @@
-export function HoldInfo() {
+export function Safety() {
   return `
     <div class="hold-info" id="holdInfo">
       <h3>Safety Shouldn't<br/>Be Obvious.</h3>
