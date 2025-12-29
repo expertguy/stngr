@@ -15,7 +15,9 @@ export function VideoScroll() {
           id="scrollVideo"
           muted
           playsinline
-          preload="auto"
+          preload="metadata"
+          webkit-playsinline
+          disablePictureInPicture
         ></video>
 
         ${Hero()}

@@ -87,10 +87,21 @@ export function initScrollVideo() {
 
   if (!video) return
 
+  // Add error handling
+  video.addEventListener("error", (e) => {
+    console.error("Video loading error:", e, video.error)
+  })
+
+  video.addEventListener("loadeddata", () => {
+    console.log("Video data loaded")
+  })
+
   video.src = heroVideo
+  video.load()
   video.pause()
 
   video.addEventListener("loadedmetadata", () => {
+    console.log("Video metadata loaded, duration:", video.duration)
     /* ================= HERO LOCK ================= */
     video.currentTime = HERO_TIME
     video.classList.add("is-blurred")
