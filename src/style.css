@@ -478,20 +478,26 @@ video.is-blurred {
 
 /* TITLE */
 .hold-info h3 {
-  margin: 0 0 16px 0;
+  margin: 0 0 18px 0;
+  font-family: 'Michroma', sans-serif;
+  color: white;
+  font-size: 48px;
+  font-weight: 400;
   text-transform: uppercase;
-  font-size: clamp(28px, 3vw, 64px);
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
+  line-height: 62.4px;
+  word-wrap: break-word;
 }
 
 /* BODY */
 .hold-info p {
   margin: 0;
-  font-size: 24px;
-  line-height: 1.6;
-  opacity: 0.75;
+  font-family: 'Geist', sans-serif;
+  color: #9CA3AF;
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 32px;
+  word-wrap: break-word;
 }
 
 /* ================= DEBUG ================= */

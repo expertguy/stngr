@@ -61,10 +61,9 @@ export function VideoScroll() {
 
         <!-- HOLD CHAPTER (FRAME 148) -->
         <div class="hold-info" id="holdInfo">
-          <h3>Safety Shouldn’t Be Obvious.</h3>
+          <h3>Safety Shouldn't<br/>Be Obvious.</h3>
           <p>
-            STNGR is engineered for the moments that matter — daily commutes,
-            city exploration, travel adventures, and beyond.
+            Protection doesn't need to announce itself. STNGR delivers quiet confidence through thoughtful design and engineered discretion.
           </p>
         </div>
 
