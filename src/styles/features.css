@@ -25,17 +25,51 @@
   transition: opacity 0.6s ease;
 }
 
+.features-blur {
+  position: absolute;
+  width: 1139px;
+  height: 554px;
+  left: 50%;
+  top: 15%;
+  transform: translateX(-50%);
+  background: #16212C;
+  box-shadow: 200px 200px 200px rgba(22, 33, 44, 0.8);
+  border-radius: 9999px;
+  filter: blur(100px);
+  z-index: -1;
+}
+
 .features-title {
   font-size: 48px;
-  font-weight: 600;
+  font-weight: 400;
+  font-family: 'Michroma', sans-serif;
   color: white;
   text-align: center;
+  text-transform: uppercase;
+  line-height: 62.4px;
+  margin-bottom: 12px;
+  opacity: 0;
+}
+
+.features-subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  font-family: 'Geist', sans-serif;
+  color: #9CA3AF;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 27px;
   margin-bottom: 60px;
   opacity: 0;
 }
 
 .features-overlay.visible .features-title {
   animation: fadeUp 0.8s ease forwards;
+}
+
+.features-overlay.visible .features-subtitle {
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.1s;
 }
 
 .features-overlay.visible {
