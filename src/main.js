@@ -13,7 +13,6 @@ import "./styles/debug.css"
 
 import { Header } from "./components/Header"
 import { VideoScroll } from "./components/VideoScroll"
-import { ThoughtfulProtection } from "./components/ThoughtfulProtection"
 import { Newsletter } from "./components/Newsletter"
 import { Footer } from "./components/Footer"
 
@@ -25,7 +24,6 @@ const app = document.getElementById("app")
 app.innerHTML = `
   ${Header()}
   ${VideoScroll()}
-  ${ThoughtfulProtection()}
   ${Newsletter()}
   ${Footer()}
 `

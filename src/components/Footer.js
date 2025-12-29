@@ -1,8 +1,10 @@
+import logo from "../assets/logo.png"
+
 export function Footer() {
   return `
     <footer class="footer">
       <div class="footer-logo">
-        <img src="/src/assets/logo.png" alt="STNGR" />
+        <img src="${logo}" alt="STNGR" />
       </div>
       <nav class="footer-nav">
         <a href="#featuresOverlay" class="footer-link">Features</a>
